@@ -1,44 +1,37 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useCallback, useEffect, useState, useMemo } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-  ActivityIndicator,
-} from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import { StyleSheet, View, Animated, Easing, Text } from "react-native";
 import "react-native-gesture-handler";
-import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import Main from "./src/components/Main/Main";
+import LottieView from "lottie-react-native";
 
-SplashScreen.preventAutoHideAsync().catch(() => {
-  /* reloading the app might trigger some race conditions, ignore them */
-});
+const AnimatedLottieView = Animated.createAnimatedComponent(LottieView);
 
 export default function App() {
-  const [isAnimationComplete, setAnimationComplete] = useState(false);
   const [isAppReady, setAppReady] = useState(false);
+  const [isAnimationComplete, setAnimationComplete] = useState(false);
 
-  const animation = useMemo(() => new Animated.Value(1), []);
+  const animationProgress = useRef(new Animated.Value(1));
 
   useEffect(() => {
-    if (isAppReady) {
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 1000,
-        useNativeDriver: true,
-      }).start(() => setAnimationComplete(true));
-    }
-  }, [isAppReady, animation]);
+    Animated.timing(animationProgress.current, {
+      toValue: 0,
+      duration: 5000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start(() => setAnimationComplete(true));
+  }, [isAppReady]);
 
   useEffect(() => {
     async function prepare() {
       try {
         await Font.loadAsync({
           "Poppins-Semibold": require("./src/fonts/Poppins/Poppins-SemiBold.ttf"),
+          "Poppins-Regular": require("./src/fonts/Poppins/Poppins-Regular.ttf"),
+          "Poppins-Light": require("./src/fonts/Poppins/Poppins-Light.ttf"),
         });
-        // await new Promise((resolve) => setTimeout(resolve, 4000));
+        await new Promise((resolve) => setTimeout(resolve, 5000));
       } catch (error) {
         console.warn("Error loading assets:", error);
       } finally {
@@ -49,40 +42,22 @@ export default function App() {
     prepare();
   }, []);
 
-  useEffect(() => {
-    const onAppLoaded = async () => {
-      try {
-        await SplashScreen.hideAsync();
-      } catch (e) {
-        console.log("error", error);
-      }
-    };
-
-    if (isAppReady) {
-      onAppLoaded();
-    }
-  }, [isAppReady]);
-
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="auto" backgroundColor="#FFD57B" />
       {(!isAnimationComplete || !isAppReady) && (
-        <Animated.View
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              backgroundColor: "#ffffff",
-              opacity: animation,
-              justifyContent: "center",
-              alignItems: "center",
-            },
-          ]}
-        >
-          <Text>AnimatedApdpLoader</Text>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </Animated.View>
+        <AnimatedLottieView
+          style={{
+            backgroundColor: "#FFD57B",
+            width: "100%",
+            height: "100%",
+            opacity: animationProgress.current,
+          }}
+          source={require("./src/animation/LionSplash.json")}
+          progress={animationProgress.current}
+        />
       )}
-      {isAnimationComplete && <Main></Main>}
+      {isAnimationComplete && isAppReady && <Main />}
     </View>
   );
 }
@@ -90,22 +65,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  button: {
-    backgroundColor: "blue",
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontFamily: "Poppins-Semibold",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // backgroundColor: "#00ff00",
   },
 });

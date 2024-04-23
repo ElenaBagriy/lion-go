@@ -1,47 +1,26 @@
-import React, { useCallback, useEffect } from "react";
-import * as Updates from "expo-updates";
-import { Pressable, StyleSheet, View, Text, Platform } from "react-native";
-import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { StyleSheet, View, Animated, Easing, Text } from "react-native";
+
+import Home from "../../screens/Home/Home";
+
+const MainStack = createStackNavigator();
 
 export default function Main() {
-  const onReloadPress = useCallback(() => {
-    if (Platform.OS === "web") {
-      location.reload();
-    } else {
-      Updates.reloadAsync();
-    }
-  }, []);
-
   return (
-    <View style={styles.content}>
-      <StatusBar backgroundColor="#F79433" />
-      <Pressable onPress={onReloadPress} style={styles.button}>
-        <Text style={styles.buttonText}>Run Again</Text>
-      </Pressable>
-      <Text>some text</Text>
-    </View>
+    <NavigationContainer>
+      <MainStack.Navigator initialRouteName={Home}>
+        <MainStack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </MainStack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  button: {
-    backgroundColor: "blue",
-    padding: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontFamily: "Poppins-Semibold",
-  },
-});
+const styles = StyleSheet.create({});
