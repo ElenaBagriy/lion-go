@@ -8,27 +8,10 @@ import {
 } from "react-native";
 import ChatBubble from "react-native-chat-bubble";
 import { StatusBar } from "expo-status-bar";
+import Button from "../../components/Button/Button";
+// import ChooseNativeLanguage from "../Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
 
-const Home = () => {
-  const [isStartPressed, setIsStartPressed] = useState(false);
-  const [isLogInPressed, setIsLogInPressed] = useState(false);
-
-  const handleStartPressIn = () => {
-    setIsStartPressed(true);
-  };
-
-  const handleStartPressOut = () => {
-    setIsStartPressed(false);
-  };
-
-  const handleLogInPressIn = () => {
-    setIsLogInPressed(true);
-  };
-
-  const handleLogInPressOut = () => {
-    setIsLogInPressed(false);
-  };
-
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" backgroundColor="#FFFFFF" />
@@ -38,7 +21,7 @@ const Home = () => {
         tailColor="#D3D1D1"
         withTail={true}
         style={styles.speechBubble}
-        // onPress={() => console.log("Bubble Pressed!")}
+        onPress={() => console.log("Bubble Pressed!")}
       >
         <Text style={styles.speechText}>Hello, I'm Lion!</Text>
       </ChatBubble>
@@ -53,40 +36,17 @@ const Home = () => {
         </Text>
       </View>
       <View style={{ gap: 25 }}>
-        <TouchableHighlight
-          underlayColor="#FFD61B"
-          onPress={() => console.log("GET STARTED pressed!")}
-          style={styles.button}
-          onPressIn={handleStartPressIn}
-          onPressOut={handleStartPressOut}
-        >
-          <Text
-            style={[
-              styles.buttonText,
-              isStartPressed && styles.buttonTextPressed,
-            ]}
-          >
-            GET STARTED
-          </Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          underlayColor="#FFD61B"
-          onPress={() => console.log("Pressed!")}
-          style={[styles.button, styles.buttonWhite]}
-          onPressIn={handleLogInPressIn}
-          onPressOut={handleLogInPressOut}
-        >
-          <Text
-            style={[
-              styles.buttonText,
-              styles.buttonTextYellow,
-              isLogInPressed && styles.buttonTextPressed,
-            ]}
-          >
-            LOG IN
-          </Text>
-        </TouchableHighlight>
+        <Button
+          title="GET STARTED"
+          navigation={navigation}
+          component={"ChooseNativeLanguage"}
+        />
+        <Button
+          title="LOG IN"
+          navigation={navigation}
+          // component={"/"}
+          color="white"
+        />
       </View>
     </View>
   );
@@ -102,9 +62,25 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 42,
   },
+  speechBubble: {
+    borderWidth: 1,
+    borderColor: "#D3D1D1",
+    height: 34,
+    paddingLeft: 20,
+    paddingRight: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 56,
+  },
+  speechText: {
+    fontSize: 12,
+    fontFamily: "Poppins-Regular",
+    color: "#650000",
+  },
   logo: {
     width: 206,
     height: 244,
+    marginTop: 18,
   },
   title: {
     color: "#650000",
@@ -118,6 +94,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 99,
   },
+  touchable: {
+    borderRadius: 20,
+  },
   button: {
     backgroundColor: "#F2C700",
     width: 302,
@@ -126,26 +105,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
   },
+  buttonPressed: {
+    backgroundColor: "#F2C700",
+    borderColor: "transparent",
+  },
   buttonWhite: {
     backgroundColor: "#FFFFFF",
     borderColor: "#F2C700",
     borderWidth: 1,
-  },
-  speechBubble: {
-    borderWidth: 1,
-    borderColor: "#D3D1D1",
-    height: 34,
-    paddingLeft: 20,
-    paddingRight: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 18,
-    marginTop: 56,
-  },
-  speechText: {
-    fontSize: 12,
-    fontFamily: "Poppins-Regular",
-    color: "#650000",
   },
   buttonText: {
     fontSize: 25,
@@ -156,7 +123,7 @@ const styles = StyleSheet.create({
     color: "#F2C600",
   },
   buttonTextPressed: {
-    // color: "#650000", // измените цвет текста, как вам нужно при нажатии
+    color: "#ffffff",
   },
 });
 
