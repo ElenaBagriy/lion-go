@@ -10,7 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 
-const LanguagePicker = ({ languages }) => {
+const LanguagePicker = ({ data }) => {
   const [selectedItem, setselectedItem] = useState("German");
 
   const handleLanguageSelect = (lang) => {
@@ -43,7 +43,7 @@ const LanguagePicker = ({ languages }) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <FlatList
-        data={languages}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.name}
         extraData={selectedItem}

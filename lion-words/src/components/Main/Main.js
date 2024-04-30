@@ -5,6 +5,9 @@ import Home from "../../screens/Home/Home";
 import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import ChooseNativeLanguage from "../../screens/Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
 import ChooseLearningLanguage from "../../screens/Onboarding/ChooseLearningLanguage/ChooseLearningLanguage";
+import ChooseSourceScreen from "../../screens/Onboarding/ChooseSourceScreen/ChooseSourceScreen";
+import ChooseReasonsScreen from "../../screens/Onboarding/ChooseReasonsScreen/ChooseReasonsScreen";
+import SetRemindersScreen from "../../screens/Onboarding/SetRemindersScreen/SetRemindersScreen";
 const MainStack = createStackNavigator();
 
 export default function Main() {
@@ -41,6 +44,36 @@ export default function Main() {
           <MainStack.Screen
             name="ChooseLearningLanguage"
             component={ChooseLearningLanguage}
+            options={({ navigation }) => ({
+              title: "",
+              // headerBackImageSource: require("../../images/backArrow.png"),
+              headerBackTitleVisible: false,
+              headerShadowVisible: false,
+            })}
+          />
+          <MainStack.Screen
+            name="ChooseSourceScreen"
+            component={ChooseSourceScreen}
+            options={({ navigation }) => ({
+              title: "",
+              // headerBackImageSource: require("../../images/backArrow.png"),
+              headerBackTitleVisible: false,
+              headerShadowVisible: false,
+            })}
+          />
+          <MainStack.Screen
+            name="ChooseReasonsScreen"
+            component={ChooseReasonsScreen}
+            options={({ navigation }) => ({
+              title: "",
+              // headerBackImageSource: require("../../images/backArrow.png"),
+              headerBackTitleVisible: false,
+              headerShadowVisible: false,
+            })}
+          />
+          <MainStack.Screen
+            name="SetRemindersScreen"
+            component={SetRemindersScreen}
             options={({ navigation }) => ({
               title: "",
               // headerBackImageSource: require("../../images/backArrow.png"),

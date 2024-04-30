@@ -18,12 +18,8 @@ const Button = ({ navigation, component, title, color }) => {
         component ? navigation.navigate(`${component}`) : console.log("press")
       }
       style={styles.touchable}
-      onPressIn={
-        color === "white" ? handleLogInPressIn : console.log("onpressIn")
-      }
-      onPressOut={
-        color === "white" ? handleLogInPressOut : console.log("onpressOut")
-      }
+      onPressIn={color === "white" ? handleLogInPressIn : null}
+      onPressOut={color === "white" ? handleLogInPressOut : null}
     >
       <View
         style={[

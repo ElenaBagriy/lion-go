@@ -46,12 +46,12 @@ const ChooseLearningLanguage = ({ navigation }) => {
             placeholder="Search language"
             keyboardType="default"
           />
-          <LanguagePicker languages={filteredLanguages} />
+          <LanguagePicker data={filteredLanguages} />
         </View>
         <Button
           title="NEXT"
           navigation={navigation}
-          // component={"sdsd"}
+          component={"ChooseSourceScreen"}
         ></Button>
       </View>
     </TouchableWithoutFeedback>

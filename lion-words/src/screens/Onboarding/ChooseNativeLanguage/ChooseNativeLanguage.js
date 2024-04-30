@@ -44,7 +44,7 @@ const ChooseNativeLanguage = ({ navigation }) => {
             placeholder="Search language"
             keyboardType="default"
           />
-          <LanguagePicker languages={filteredLanguages} />
+          <LanguagePicker data={filteredLanguages} />
         </View>
         <Button
           title="NEXT"
