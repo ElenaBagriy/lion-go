@@ -27,10 +27,10 @@ export default function App() {
     async function prepare() {
       try {
         await Font.loadAsync({
-          "Poppins-Semibold": require("./src/fonts/Poppins/Poppins-SemiBold.ttf"),
-          "Poppins-Regular": require("./src/fonts/Poppins/Poppins-Regular.ttf"),
           "Poppins-Light": require("./src/fonts/Poppins/Poppins-Light.ttf"),
           "Poppins-Medium": require("./src/fonts/Poppins/Poppins-Medium.ttf"),
+          "Poppins-Regular": require("./src/fonts/Poppins/Poppins-Regular.ttf"),
+          "Poppins-Semibold": require("./src/fonts/Poppins/Poppins-SemiBold.ttf"),
           "Poppins-Bold": require("./src/fonts/Poppins/Poppins-Bold.ttf"),
         });
         await new Promise((resolve) => setTimeout(resolve, 5000));

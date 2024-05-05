@@ -10,6 +10,8 @@ import ChooseReasonsScreen from "../../screens/Onboarding/ChooseReasonsScreen/Ch
 import SetRemindersScreen from "../../screens/Onboarding/SetRemindersScreen/SetRemindersScreen";
 import CreateProfileWelcomeScreen from "../../screens/Onboarding/CreateProfile/CreateProfileWelcomeScreen/CreateProfileWelcomeScreen";
 import CreatingProfile from "../../screens/Onboarding/CreateProfile/CreatingProfile/CreatingProfile";
+import ChooseIdentity from "../../screens/Onboarding/CreateProfile/ChooseIdentity/ChooseIdentity";
+import ChooseBirthday from "../../screens/Onboarding/CreateProfile/ChooseBirthday/ChooseBirthday";
 const MainStack = createStackNavigator();
 
 export default function Main() {
@@ -99,6 +101,38 @@ export default function Main() {
               component={CreatingProfile}
               options={({ navigation }) => ({
                 title: "Creating a Profile",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="ChooseIdentity"
+              component={ChooseIdentity}
+              options={({ navigation }) => ({
+                title: "Choose your identity",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="ChooseBirthday"
+              component={ChooseBirthday}
+              options={({ navigation }) => ({
+                title: "When is Your Birthday?",
                 // headerBackImageSource: require("../../images/backArrow.png"),
                 headerBackTitleVisible: false,
                 headerShadowVisible: false,

@@ -1,6 +1,7 @@
 PODS:
   - BEMCheckBox (1.4.1)
   - boost (1.83.0)
+  - CustomDatePickerIOS (0.0.5)
   - DoubleConversion (1.1.6)
   - EASClient (0.11.2):
     - ExpoModulesCore
@@ -1183,9 +1184,9 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
-  - RNCPicker (2.6.1):
+  - RNCPicker (2.7.5):
     - React-Core
-  - RNDateTimePicker (7.6.1):
+  - RNDateTimePicker (8.0.0):
     - React-Core
   - RNGestureHandler (2.14.1):
     - glog
@@ -1210,6 +1211,7 @@ PODS:
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
+  - CustomDatePickerIOS (from `../node_modules/react-native-custom-datepicker-ios`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EASClient (from `../node_modules/expo-eas-client/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -1303,6 +1305,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
+  CustomDatePickerIOS:
+    :path: "../node_modules/react-native-custom-datepicker-ios"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EASClient:
@@ -1460,6 +1464,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
+  CustomDatePickerIOS: b7459fc245fd31ba4eecfebbacf9383aff8423e6
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   EASClient: a42ee8bf36c93b3128352faf2ae49405ab4f80bd
   EXConstants: a5f6276e565d98f9eb4280f81241fc342d641590
@@ -1533,8 +1538,8 @@ SPEC CHECKSUMS:
   ReactCommon: 2aa35648354bd4c4665b9a5084a7d37097b89c10
   RNCCheckbox: a3ca9978cb0846b981d28da4e9914bd437403d77
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNCPicker: b18aaf30df596e9b1738e7c1f9ee55402a229dca
-  RNDateTimePicker: 8fb39263b721223e095248acaf6f406d5b7f6713
+  RNCPicker: 3e2c37a8328f368ce14da050cdc8231deb5fc9f9
+  RNDateTimePicker: cd42eda5f315fc320f0b359413bd598957f7e601
   RNGestureHandler: 15c6ef51acba34c49ff03003806cf5dd6098f383
   RNReanimated: f6b02d8f5eaa2830296411d4ec3b8ef5442dd13d
   RNScreens: 17e2f657f1b09a71ec3c821368a04acbb7ebcb46

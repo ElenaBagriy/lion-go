@@ -117,11 +117,15 @@ const CreatingProfile = ({ navigation }) => {
           <Button
             title="SIGN UP"
             navigation={navigation}
-            // component={"ChooseNativeLanguage"}
+            component={"ChooseIdentity"}
           />
         </View>
         <View style={styles.btmWrapper}>
-          <Text style={styles.socialText}>or continue with</Text>
+          <View style={styles.dividerWrapper}>
+            <View style={styles.divider}></View>
+            <Text style={styles.socialText}>or continue with</Text>
+            <View style={styles.divider}></View>
+          </View>
           <View style={styles.linkWrapper}>
             <TouchableOpacity
               style={styles.socialBtn}
@@ -232,7 +236,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 30,
   },
-
+  dividerWrapper: {
+    flexDirection: "row",
+    gap: 6,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  divider: {
+    width: 71,
+    height: 1,
+    backgroundColor: "#EEEEEE",
+  },
   socialText: {
     fontFamily: "Poppins-Light",
     fontSize: 18,
