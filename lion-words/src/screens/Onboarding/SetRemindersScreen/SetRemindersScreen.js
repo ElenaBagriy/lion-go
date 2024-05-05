@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -10,29 +10,32 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Button from "../../../components/Button/Button";
-import Slider from "@react-native-community/slider";
-import DateTimePicker from "@react-native-community/datetimepicker";
+// import Slider from "@react-native-community/slider";
+import { Slider } from "@react-native-assets/slider";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const SetRemindersScreen = ({ navigation }) => {
   const [time, setTime] = useState(new Date());
-  //   const [showPicker, setShowPicker] = useState(Platform.OS === "ios");
+  const [sliderValue, setsliderValue] = useState(time.getHours());
 
-  //   const togglePicker = () => {
-  //     setShowPicker(!showPicker);
-  //   };
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  let value;
 
-  const handleSliderTimeChange = (selectedTime) => {
-    if (selectedTime !== undefined) {
-      setTime(selectedTime);
-    }
-    // Platform.OS !== "ios" && setShowPicker(false);
+  const showDatePicker = () => {
+    Platform.OS === "ios" && setDatePickerVisibility(true);
+    Platform.OS === "android" && openAndroidTimePicker();
   };
 
-  const handlePickerTimeChange = (event, selectedTime) => {
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleTimeChange = (selectedTime) => {
     if (selectedTime !== undefined) {
       setTime(selectedTime);
     }
+    Platform.OS === "ios" && hideDatePicker();
   };
 
   const openAndroidTimePicker = async () => {
@@ -42,13 +45,17 @@ const SetRemindersScreen = ({ navigation }) => {
       mode: "time",
       display: "clock",
       onChange: (e, value) => {
-        setTime(value);
+        handleTimeChange(value);
       },
       onError: (e) => {
         console.log(e);
       },
     });
   };
+
+  useEffect(() => {
+    setsliderValue(time.getHours());
+  }, [time]);
 
   const setReminder = () => {
     // Здесь можете использовать выбранное время для установки напоминания
@@ -71,44 +78,50 @@ const SetRemindersScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.timeWrapper}>
-            {Platform.OS === "android" && (
-              <TouchableOpacity onPress={openAndroidTimePicker}>
-                <Text>
-                  {time.toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}
-                </Text>
-              </TouchableOpacity>
-            )}
+            <TouchableOpacity
+              onPress={showDatePicker}
+              style={styles.timeButton}
+            >
+              <Text style={styles.timeText}>
+                {time.toLocaleTimeString("en-CH", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}
+              </Text>
+            </TouchableOpacity>
             {Platform.OS === "ios" && (
-              <DateTimePicker
-                value={time}
+              <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                buttonTextColorIOS={"#650000"}
+                date={time}
                 mode="time"
-                is24Hour={true}
-                display={Platform.OS === "ios" ? "default" : "default"}
-                minuteInterval={5}
-                onChange={handlePickerTimeChange}
+                onConfirm={handleTimeChange}
+                onCancel={hideDatePicker}
               />
             )}
             <Slider
               style={styles.slider}
+              trackStyle={styles.trackStyle}
+              thumbStyle={styles.thumbStyle}
               minimumValue={0}
               maximumValue={24}
-              step={0.5}
-              value={time.getHours()}
+              step={1}
+              slideOnTap={true}
               onValueChange={(newValue) => {
                 const newDate = new Date();
                 newDate.setHours(newValue);
-                handleSliderTimeChange(newDate);
+                setsliderValue(newValue);
+                handleTimeChange(newDate);
               }}
+              value={sliderValue}
             />
           </View>
         </View>
         <Button
           title="NEXT"
           navigation={navigation}
+          onPressFunc={setReminder}
           // component={"sdsd"}
         ></Button>
       </View>
@@ -154,10 +167,45 @@ const styles = StyleSheet.create({
   },
   timeWrapper: {
     width: "100%",
+    gap: 25,
+  },
+  timeButton: {
+    alignItems: "center",
+  },
+
+  timeText: {
+    color: "#650000",
+    fontSize: 40,
+    fontFamily: "Poppins-Bold",
   },
   slider: {
     width: "80%",
     alignSelf: "center",
+  },
+  trackStyle: {
+    backgroundColor: "#FFD57B",
+    borderRadius: 25,
+    height: 12,
+  },
+  thumbStyle: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 50,
+    borderColor: "#FFD57B",
+    borderWidth: 1,
+    height: 34,
+    width: 34,
+    ...Platform.select({
+      ios: {
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+    }),
+    ...Platform.select({
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });
 

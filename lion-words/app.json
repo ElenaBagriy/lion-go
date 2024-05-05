@@ -6,6 +6,7 @@
     "slug": "lion-words",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
-    "plugins": ["expo-font"]
+    "plugins": ["expo-font"],
+    "userInterfaceStyle": "automatic"
   }
 }

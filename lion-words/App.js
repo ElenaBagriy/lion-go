@@ -31,6 +31,7 @@ export default function App() {
           "Poppins-Regular": require("./src/fonts/Poppins/Poppins-Regular.ttf"),
           "Poppins-Light": require("./src/fonts/Poppins/Poppins-Light.ttf"),
           "Poppins-Medium": require("./src/fonts/Poppins/Poppins-Medium.ttf"),
+          "Poppins-Bold": require("./src/fonts/Poppins/Poppins-Bold.ttf"),
         });
         await new Promise((resolve) => setTimeout(resolve, 5000));
       } catch (error) {

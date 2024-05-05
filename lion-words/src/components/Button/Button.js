@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Platform,
+} from "react-native";
 
-const Button = ({ navigation, component, title, color }) => {
+const Button = ({ navigation, component, title, color, onPressFunc }) => {
   const [isLogInPressed, setIsLogInPressed] = useState(false);
 
   const handleLogInPressIn = () => {
@@ -12,11 +18,14 @@ const Button = ({ navigation, component, title, color }) => {
     setIsLogInPressed(false);
   };
 
+  const onPress = () => {
+    onPressFunc && onPressFunc();
+    component && navigation.navigate(`${component}`);
+  };
+
   return (
     <TouchableHighlight
-      onPress={() =>
-        component ? navigation.navigate(`${component}`) : console.log("press")
-      }
+      onPress={onPress}
       style={styles.touchable}
       onPressIn={color === "white" ? handleLogInPressIn : null}
       onPressOut={color === "white" ? handleLogInPressOut : null}
@@ -46,6 +55,18 @@ const styles = StyleSheet.create({
   touchable: {
     borderRadius: 20,
     position: "relative",
+    ...Platform.select({
+      ios: {
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+    }),
+    ...Platform.select({
+      android: {
+        elevation: 3,
+      },
+    }),
   },
   title: {
     color: "#650000",
