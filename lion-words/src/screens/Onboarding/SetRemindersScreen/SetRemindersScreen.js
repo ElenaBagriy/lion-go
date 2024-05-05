@@ -122,7 +122,7 @@ const SetRemindersScreen = ({ navigation }) => {
           title="NEXT"
           navigation={navigation}
           onPressFunc={setReminder}
-          // component={"sdsd"}
+          component={"CreateProfileWelcomeScreen"}
         ></Button>
       </View>
     </TouchableWithoutFeedback>

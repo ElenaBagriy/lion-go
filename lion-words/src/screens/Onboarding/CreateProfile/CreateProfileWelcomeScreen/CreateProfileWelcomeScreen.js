@@ -1,47 +1,40 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, Image } from "react-native";
 import ChatBubble from "react-native-chat-bubble";
-import { StatusBar } from "expo-status-bar";
-import Button from "../../components/Button/Button";
-// import ChooseNativeLanguage from "../Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
+import Button from "../../../../components/Button/Button";
 
-const Home = ({ navigation }) => {
+const CreateProfileWelcomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" backgroundColor="#FFFFFF" />
-      <ChatBubble
-        isOwnMessage={true}
-        bubbleColor="#FAFAFA"
-        tailColor="#D3D1D1"
-        withTail={true}
-        style={styles.speechBubble}
-      >
-        <Text style={styles.speechText}>Hello, I'm Lion!</Text>
-      </ChatBubble>
-      <View style={{ gap: 12, alignItems: "center", marginBottom: 54 }}>
-        <Image
-          style={styles.logo}
-          source={require("../../images/CrownLion.png")}
-        />
-        <Text style={styles.title}>LIONGO</Text>
-        <Text style={styles.text}>
-          Learn Languages whenever and wherever you want. It's free forever.
-        </Text>
+      <View style={styles.mainContent}>
+        <ChatBubble
+          isOwnMessage={true}
+          bubbleColor="#FAFAFA"
+          tailColor="#D3D1D1"
+          withTail={true}
+          style={styles.speechBubble}
+        >
+          <Text style={styles.speechText}>Awesome!</Text>
+        </ChatBubble>
+        <View style={{ gap: 27, alignItems: "center" }}>
+          <Image
+            style={styles.logo}
+            source={require("../../../../images/welcomeLion.png")}
+          />
+          <Text style={styles.text}>
+            Create a profile now, so you can save progress and connect with
+            friends. Or you can skip it.
+          </Text>
+        </View>
       </View>
       <View style={{ gap: 25 }}>
         <Button
-          title="GET STARTED"
+          title="CREATE A PROFILE"
           navigation={navigation}
-          component={"ChooseNativeLanguage"}
+          component={"CreatingProfile"}
         />
         <Button
-          title="LOG IN"
+          title="SKIP"
           navigation={navigation}
           // component={"/"}
           color="white"
@@ -55,21 +48,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     backgroundColor: "#ffffff",
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 42,
   },
+  mainContent: { alignItems: "center" },
   speechBubble: {
     borderWidth: 1,
     borderColor: "#D3D1D1",
     height: 34,
-    paddingLeft: 20,
-    paddingRight: 20,
+    paddingLeft: 30,
+    paddingRight: 30,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 56,
+    marginTop: 54,
   },
   speechText: {
     fontSize: 12,
@@ -77,14 +71,9 @@ const styles = StyleSheet.create({
     color: "#650000",
   },
   logo: {
-    width: 206,
-    height: 244,
-    marginTop: 18,
-  },
-  title: {
-    color: "#650000",
-    fontSize: 37,
-    fontFamily: "Poppins-Semibold",
+    width: 193,
+    height: 234,
+    marginTop: 35.29,
   },
   text: {
     color: "#650000",
@@ -126,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default CreateProfileWelcomeScreen;

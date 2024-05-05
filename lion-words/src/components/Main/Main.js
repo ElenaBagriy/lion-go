@@ -8,6 +8,8 @@ import ChooseLearningLanguage from "../../screens/Onboarding/ChooseLearningLangu
 import ChooseSourceScreen from "../../screens/Onboarding/ChooseSourceScreen/ChooseSourceScreen";
 import ChooseReasonsScreen from "../../screens/Onboarding/ChooseReasonsScreen/ChooseReasonsScreen";
 import SetRemindersScreen from "../../screens/Onboarding/SetRemindersScreen/SetRemindersScreen";
+import CreateProfileWelcomeScreen from "../../screens/Onboarding/CreateProfile/CreateProfileWelcomeScreen/CreateProfileWelcomeScreen";
+import CreatingProfile from "../../screens/Onboarding/CreateProfile/CreatingProfile/CreatingProfile";
 const MainStack = createStackNavigator();
 
 export default function Main() {
@@ -81,6 +83,34 @@ export default function Main() {
               headerShadowVisible: false,
             })}
           />
+          <MainStack.Group>
+            <MainStack.Screen
+              name="CreateProfileWelcomeScreen"
+              component={CreateProfileWelcomeScreen}
+              options={({ navigation }) => ({
+                title: "",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+              })}
+            />
+            <MainStack.Screen
+              name="CreatingProfile"
+              component={CreatingProfile}
+              options={({ navigation }) => ({
+                title: "Creating a Profile",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+          </MainStack.Group>
         </MainStack.Navigator>
       </NavigationContainer>
     </KeyboardAvoidingView>
