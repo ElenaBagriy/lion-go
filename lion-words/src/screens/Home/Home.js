@@ -43,7 +43,7 @@ const Home = ({ navigation }) => {
         <Button
           title="LOG IN"
           navigation={navigation}
-          // component={"/"}
+          component={"SignIn"}
           color="white"
         />
       </View>

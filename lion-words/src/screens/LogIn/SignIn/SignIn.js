@@ -9,16 +9,14 @@ import {
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-import Button from "../../../../components/Button/Button";
+import Button from "../../../components/Button/Button";
 
-const CreatingProfile = ({ navigation }) => {
-  const [name, setName] = useState("");
+const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSecure, setSecure] = useState(true);
   const [isChecked, setIsChecked] = useState(false);
 
-  const nameHandler = (text) => setName(text);
   const emailHandler = (text) => setEmail(text);
   const passwordHandler = (text) => setPassword(text);
 
@@ -35,25 +33,9 @@ const CreatingProfile = ({ navigation }) => {
         <View style={styles.mainContent}>
           <Image
             style={styles.logo}
-            source={require("../../../../images/createProfileLion.png")}
+            source={require("../../../images/createProfileLion.png")}
           />
           <View style={styles.form}>
-            <View>
-              <TextInput
-                style={styles.input}
-                placeholder="Name"
-                placeholderTextColor="#9E9E9E"
-                value={name}
-                onChangeText={nameHandler}
-                inputmode="text"
-                cursorColor="#650000"
-                enterKeyHint="next"
-              />
-              <Image
-                style={styles.icon}
-                source={require("../../../../images/form/name.png")}
-              />
-            </View>
             <View>
               <TextInput
                 style={styles.input}
@@ -68,7 +50,7 @@ const CreatingProfile = ({ navigation }) => {
               />
               <Image
                 style={[styles.icon, { width: 16.67, height: 15 }]}
-                source={require("../../../../images/form/email.png")}
+                source={require("../../../images/form/email.png")}
               />
             </View>
             <View style={{ position: "relative" }}>
@@ -84,7 +66,7 @@ const CreatingProfile = ({ navigation }) => {
               />
               <Image
                 style={[styles.icon, { width: 15, height: 16.67 }]}
-                source={require("../../../../images/form/password.png")}
+                source={require("../../../images/form/password.png")}
               />
               <TouchableOpacity
                 style={styles.hide}
@@ -92,7 +74,7 @@ const CreatingProfile = ({ navigation }) => {
               >
                 <Image
                   style={{ width: 16.67, height: 14.17 }}
-                  source={require("../../../../images/form/hide.png")}
+                  source={require("../../../images/form/hide.png")}
                 />
               </TouchableOpacity>
             </View>
@@ -107,18 +89,22 @@ const CreatingProfile = ({ navigation }) => {
               onValueChange={toggleCheckBox}
             >
               {isChecked && (
-                <Image
-                  source={require("../../../../images/form/checked.png")}
-                />
+                <Image source={require("../../../images/form/checked.png")} />
               )}
             </View>
             <Text style={styles.textCheck}>Remember me</Text>
           </TouchableOpacity>
           <Button
-            title="SIGN UP"
+            title="LOG IN"
             navigation={navigation}
             component={"ChooseIdentity"}
           />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("ForgotPassword")}
+            style={styles.passwordLink}
+          >
+            <Text style={styles.textLink}>Forgot the password?</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.btmWrapper}>
           <View style={styles.dividerWrapper}>
@@ -133,7 +119,7 @@ const CreatingProfile = ({ navigation }) => {
             >
               <Image
                 style={styles.socialImg}
-                source={require("../../../../images/social/facebook-login.png")}
+                source={require("../../../images/social/facebook-login.png")}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -142,7 +128,7 @@ const CreatingProfile = ({ navigation }) => {
             >
               <Image
                 style={[styles.socialImg, { width: 23.04 }]}
-                source={require("../../../../images/social/google-login.png")}
+                source={require("../../../images/social/google-login.png")}
               />
             </TouchableOpacity>
             <TouchableOpacity
@@ -151,7 +137,7 @@ const CreatingProfile = ({ navigation }) => {
             >
               <Image
                 style={styles.socialImg}
-                source={require("../../../../images/social/apple-login.png")}
+                source={require("../../../images/social/apple-login.png")}
               />
             </TouchableOpacity>
           </View>
@@ -233,6 +219,14 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     color: "#650000",
   },
+  passwordLink: {
+    marginTop: 26,
+  },
+  textLink: {
+    fontSize: 14,
+    fontFamily: "Poppins-Medium",
+    color: "#650000",
+  },
   btmWrapper: {
     alignItems: "center",
     gap: 30,
@@ -274,4 +268,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreatingProfile;
+export default SignIn;

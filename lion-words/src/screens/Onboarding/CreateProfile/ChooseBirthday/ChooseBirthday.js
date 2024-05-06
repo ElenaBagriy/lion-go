@@ -9,41 +9,62 @@ import {
   Platform,
   TouchableOpacity,
   TextInput,
+  Alert,
+  Modal,
+  Pressable,
 } from "react-native";
 import Button from "../../../../components/Button/Button";
 
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import SucessRegistrationModal from "../../../../components/Modals/SuccessRegistration/SuccessRegistration";
 
 const ChooseBirthday = ({ navigation }) => {
   const [date, setDate] = useState("");
   const [isTextVisible, setIsTextVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const inputRef = useRef(null);
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
-  const showDatePicker = () => {
-    Platform.OS === "ios" && setDatePickerVisibility(true);
-    Platform.OS === "android" && openAndroidTimePicker();
+  const setModalShow = (visible) => {
+    console.log("Modal visibility set to:", visible);
+    setModalVisible(visible);
   };
 
+  // const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  // const showDatePicker = () => {
+  //   Platform.OS === "ios" && setDatePickerVisibility(true);
+  //   Platform.OS === "android" && openAndroidTimePicker();
+  // };
+
   const onChangeDate = (text) => {
-    // Удаляем все нечисловые символы из введенной строки
     const cleanedText = text.replace(/\D/g, "");
-    // Форматируем дату в нужный вид (DD/MM/YYYY)
+
+    const day = cleanedText.slice(0, 2);
+    const month = cleanedText.slice(2, 4);
+    const year = cleanedText.slice(4, 8);
+
+    // Форматируем компоненты даты с учетом их длины
     let formattedText = "";
-    if (cleanedText.length > 0) {
-      formattedText = cleanedText.slice(0, 2);
-      if (cleanedText.length > 2) {
-        formattedText += "/" + cleanedText.slice(2, 4);
-        if (cleanedText.length > 4) {
-          formattedText += "/" + cleanedText.slice(4, 8);
-        }
-      }
+
+    if (day) {
+      formattedText += day;
+      if (day.length === 2 && month) formattedText += "/";
     }
+    if (month) {
+      formattedText += month;
+      if (month.length === 2 && year) formattedText += "/";
+    }
+    if (year) formattedText += year;
+
     setDate(formattedText);
     setIsTextVisible(text === "");
   };
+
+  useEffect(() => {
+    !date && setIsTextVisible(true);
+  }, [date]);
+
   const focusInput = () => {
     inputRef.current.focus();
   };
@@ -81,6 +102,10 @@ const ChooseBirthday = ({ navigation }) => {
             style={styles.image}
             source={require("../../../../images/leon-in-donought.png")}
           />
+          <SucessRegistrationModal
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
 
           <TouchableWithoutFeedback onPress={focusInput}>
             <View style={styles.inputWrapper}>
@@ -92,6 +117,7 @@ const ChooseBirthday = ({ navigation }) => {
                 onChangeText={onChangeDate}
                 value={date}
                 ref={inputRef}
+                keyboardType="number-pad"
               />
               <Image
                 style={styles.icon}
@@ -103,6 +129,7 @@ const ChooseBirthday = ({ navigation }) => {
         <View style={styles.btnWrapper}>
           <Button
             title="NEXT"
+            onPressFunc={() => setModalShow(true)}
             navigation={navigation}
             //   component={"CreateProfileWelcomeScreen"}
           />
@@ -146,6 +173,9 @@ const styles = StyleSheet.create({
     paddingLeft: 23,
     backgroundColor: "#FAFAFA",
     borderRadius: 10,
+    color: "#650000",
+    fontFamily: "Poppins-Medium",
+    fontSize: 14,
   },
   placeholder: {
     position: "absolute",
@@ -165,6 +195,48 @@ const styles = StyleSheet.create({
   },
   btnWrapper: {
     gap: 19,
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
   },
 });
 

@@ -12,6 +12,11 @@ import CreateProfileWelcomeScreen from "../../screens/Onboarding/CreateProfile/C
 import CreatingProfile from "../../screens/Onboarding/CreateProfile/CreatingProfile/CreatingProfile";
 import ChooseIdentity from "../../screens/Onboarding/CreateProfile/ChooseIdentity/ChooseIdentity";
 import ChooseBirthday from "../../screens/Onboarding/CreateProfile/ChooseBirthday/ChooseBirthday";
+import SignIn from "../../screens/LogIn/SignIn/SignIn";
+import ForgotPassword from "../../screens/LogIn/ForgotPassword/ForgotPassword";
+import PasswordReset from "../../screens/LogIn/PasswordReset/PasswordReset";
+import NewPassword from "../../screens/LogIn/NewPassword/NewPassword";
+import WelcomeBack from "../../screens/LogIn/WelcomeBack/WelcomeBack";
 const MainStack = createStackNavigator();
 
 export default function Main() {
@@ -143,6 +148,79 @@ export default function Main() {
                   color: "#650000",
                 },
               })}
+            />
+          </MainStack.Group>
+          <MainStack.Group>
+            <MainStack.Screen
+              name="SignIn"
+              component={SignIn}
+              options={({ navigation }) => ({
+                title: "Sign In",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}
+              options={({ navigation }) => ({
+                title: "Forgot Password",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="PasswordReset"
+              component={PasswordReset}
+              options={({ navigation }) => ({
+                title: "Password Reset",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="NewPassword"
+              component={NewPassword}
+              options={({ navigation }) => ({
+                title: "New Password",
+                // headerBackImageSource: require("../../images/backArrow.png"),
+                headerBackTitleVisible: false,
+                headerShadowVisible: false,
+                headerTitleAlign: "center",
+                headerTitleStyle: {
+                  fontFamily: "Poppins-Regular",
+                  fontSize: 19,
+                  color: "#650000",
+                },
+              })}
+            />
+            <MainStack.Screen
+              name="WelcomeBack"
+              component={WelcomeBack}
+              options={{
+                headerShown: false,
+              }}
             />
           </MainStack.Group>
         </MainStack.Navigator>

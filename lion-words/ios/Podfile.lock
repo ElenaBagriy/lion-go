@@ -123,6 +123,7 @@ PODS:
   - hermes-engine (0.73.6):
     - hermes-engine/Pre-built (= 0.73.6)
   - hermes-engine/Pre-built (0.73.6)
+  - InputMask (6.1.0)
   - libevent (2.1.12)
   - lottie-ios (4.3.4)
   - lottie-react-native (6.5.1):
@@ -1012,6 +1013,10 @@ PODS:
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
+  - react-native-text-input-mask (3.2.0):
+    - InputMask (~> 6.1.0)
+    - React-Core
+    - React-RCTText
   - React-nativeconfig (0.73.6)
   - React-NativeModulesApple (0.73.6):
     - glog
@@ -1262,6 +1267,7 @@ DEPENDENCIES:
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-slider (from `../node_modules/@react-native-community/slider`)"
+  - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1296,6 +1302,7 @@ SPEC REPOS:
   trunk:
     - BEMCheckBox
     - fmt
+    - InputMask
     - libevent
     - lottie-ios
     - ReachabilitySwift
@@ -1402,6 +1409,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-slider:
     :path: "../node_modules/@react-native-community/slider"
+  react-native-text-input-mask:
+    :path: "../node_modules/react-native-text-input-mask"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1488,6 +1497,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 9cecf9953a681df7556b8cc9c74905de8f3293c0
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: 3d98679b41fa6fd6aff2352b3953dbd3df8a397e
   lottie-react-native: 47647f2d687cc522179dc473650e4e5101021786
@@ -1516,6 +1526,7 @@ SPEC CHECKSUMS:
   react-native-pager-view: d5f3adb58a4e6e0d200055e9a4afdcda9b9022ce
   react-native-safe-area-context: 0ee144a6170530ccc37a0fd9388e28d06f516a89
   react-native-slider: 7a39874fc1fcdfee48e448fa72cce0a8f2c7c5d6
+  react-native-text-input-mask: a273f7823ac4cb7189ea96873fd7b4a48b8aaaaa
   React-nativeconfig: b4d4e9901d4cabb57be63053fd2aa6086eb3c85f
   React-NativeModulesApple: cd26e56d56350e123da0c1e3e4c76cb58a05e1ee
   React-perflogger: 5f49905de275bac07ac7ea7f575a70611fa988f2
@@ -1548,6 +1559,6 @@ SPEC CHECKSUMS:
   sqlite3: f163dbbb7aa3339ad8fc622782c2d9d7b72f7e9c
   Yoga: d17d2cc8105eed528474683b42e2ea310e1daf61
 
-PODFILE CHECKSUM: 2cd3994e62c69c2c3b2ad159321927e49706e16d
+PODFILE CHECKSUM: 703e359c61b76ffef381a1dbd0dd611c613910f5
 
 COCOAPODS: 1.15.2
