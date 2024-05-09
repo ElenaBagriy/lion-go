@@ -11,6 +11,7 @@ import {
 import Button from "../../../components/Button/Button";
 import LanguagePicker from "../../../components/LanguagePicker/LanguagePicker";
 import { languages } from "../../../data/languages";
+import PaginationDots from "../../../components/PaginationDots/PaginationDots";
 
 const ChooseNativeLanguage = ({ navigation }) => {
   const [inputValue, setinputValue] = useState("");

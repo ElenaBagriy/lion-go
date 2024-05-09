@@ -22,11 +22,7 @@ const WelcomeBack = ({ navigation }) => {
       <Text style={styles.text}>
         You have successfully reset and create a new password.
       </Text>
-      <Button
-        title="HOME"
-        navigation={navigation}
-        // component={"ChooseIdentity"}
-      />
+      <Button title="HOME" navigation={navigation} component={"ActionPage"} />
     </View>
   );
 };

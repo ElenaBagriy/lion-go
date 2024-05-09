@@ -9,12 +9,13 @@ import {
 import ChatBubble from "react-native-chat-bubble";
 import { StatusBar } from "expo-status-bar";
 import Button from "../../components/Button/Button";
-// import ChooseNativeLanguage from "../Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
+import PaginationDots from "../../components/PaginationDots/PaginationDots";
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" backgroundColor="#FFFFFF" />
+      <PaginationDots page="Home" />
       <ChatBubble
         isOwnMessage={true}
         bubbleColor="#FAFAFA"
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 42,
+    paddingTop: 47,
   },
   speechBubble: {
     borderWidth: 1,

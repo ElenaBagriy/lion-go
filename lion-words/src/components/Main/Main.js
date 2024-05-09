@@ -17,6 +17,8 @@ import ForgotPassword from "../../screens/LogIn/ForgotPassword/ForgotPassword";
 import PasswordReset from "../../screens/LogIn/PasswordReset/PasswordReset";
 import NewPassword from "../../screens/LogIn/NewPassword/NewPassword";
 import WelcomeBack from "../../screens/LogIn/WelcomeBack/WelcomeBack";
+import PaginationDots from "../PaginationDots/PaginationDots";
+import ActionPage from "../../screens/ActionPage/ActionPage";
 const MainStack = createStackNavigator();
 
 export default function Main() {
@@ -48,6 +50,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
+              headerTitle: () => <PaginationDots page="ChooseNativeLanguage" />,
             })}
           />
           <MainStack.Screen
@@ -58,6 +61,9 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
+              headerTitle: () => (
+                <PaginationDots page="ChooseLearningLanguage" />
+              ),
             })}
           />
           <MainStack.Screen
@@ -68,6 +74,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
+              headerTitle: () => <PaginationDots page="ChooseSourceScreen" />,
             })}
           />
           <MainStack.Screen
@@ -78,6 +85,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
+              headerTitle: () => <PaginationDots page="ChooseReasonsScreen" />,
             })}
           />
           <MainStack.Screen
@@ -88,6 +96,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
+              headerTitle: () => <PaginationDots page="SetRemindersScreen" />,
             })}
           />
           <MainStack.Group>
@@ -99,6 +108,9 @@ export default function Main() {
                 // headerBackImageSource: require("../../images/backArrow.png"),
                 headerBackTitleVisible: false,
                 headerShadowVisible: false,
+                headerTitle: () => (
+                  <PaginationDots page="CreateProfileWelcomeScreen" />
+                ),
               })}
             />
             <MainStack.Screen
@@ -218,6 +230,15 @@ export default function Main() {
             <MainStack.Screen
               name="WelcomeBack"
               component={WelcomeBack}
+              options={{
+                headerShown: false,
+              }}
+            />
+          </MainStack.Group>
+          <MainStack.Group>
+            <MainStack.Screen
+              name="ActionPage"
+              component={ActionPage}
               options={{
                 headerShown: false,
               }}
