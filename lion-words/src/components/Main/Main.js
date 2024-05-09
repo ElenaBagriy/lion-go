@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../../screens/Home/Home";
 import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ChooseNativeLanguage from "../../screens/Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
 import ChooseLearningLanguage from "../../screens/Onboarding/ChooseLearningLanguage/ChooseLearningLanguage";
 import ChooseSourceScreen from "../../screens/Onboarding/ChooseSourceScreen/ChooseSourceScreen";
@@ -19,7 +20,9 @@ import NewPassword from "../../screens/LogIn/NewPassword/NewPassword";
 import WelcomeBack from "../../screens/LogIn/WelcomeBack/WelcomeBack";
 import PaginationDots from "../PaginationDots/PaginationDots";
 import ActionPage from "../../screens/ActionPage/ActionPage";
+
 const MainStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function Main() {
   return (
@@ -51,6 +54,7 @@ export default function Main() {
               headerBackTitleVisible: false,
               headerShadowVisible: false,
               headerTitle: () => <PaginationDots page="ChooseNativeLanguage" />,
+              headerTitleAlign: "center",
             })}
           />
           <MainStack.Screen
@@ -64,6 +68,7 @@ export default function Main() {
               headerTitle: () => (
                 <PaginationDots page="ChooseLearningLanguage" />
               ),
+              headerTitleAlign: "center",
             })}
           />
           <MainStack.Screen
@@ -75,6 +80,7 @@ export default function Main() {
               headerBackTitleVisible: false,
               headerShadowVisible: false,
               headerTitle: () => <PaginationDots page="ChooseSourceScreen" />,
+              headerTitleAlign: "center",
             })}
           />
           <MainStack.Screen
@@ -86,6 +92,7 @@ export default function Main() {
               headerBackTitleVisible: false,
               headerShadowVisible: false,
               headerTitle: () => <PaginationDots page="ChooseReasonsScreen" />,
+              headerTitleAlign: "center",
             })}
           />
           <MainStack.Screen
@@ -97,6 +104,7 @@ export default function Main() {
               headerBackTitleVisible: false,
               headerShadowVisible: false,
               headerTitle: () => <PaginationDots page="SetRemindersScreen" />,
+              headerTitleAlign: "center",
             })}
           />
           <MainStack.Group>
@@ -111,6 +119,7 @@ export default function Main() {
                 headerTitle: () => (
                   <PaginationDots page="CreateProfileWelcomeScreen" />
                 ),
+                headerTitleAlign: "center",
               })}
             />
             <MainStack.Screen
@@ -237,8 +246,8 @@ export default function Main() {
           </MainStack.Group>
           <MainStack.Group>
             <MainStack.Screen
-              name="ActionPage"
-              component={ActionPage}
+              name="TabNavigator"
+              component={TabNavigator}
               options={{
                 headerShown: false,
               }}
@@ -247,6 +256,23 @@ export default function Main() {
         </MainStack.Navigator>
       </NavigationContainer>
     </KeyboardAvoidingView>
+  );
+}
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator initialRouteName="ActionPage">
+      <Tab.Screen
+        name="ActionPage"
+        component={ActionPage}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Tab.Screen name="A1" component={A1} />
+      <Tab.Screen name="A2" component={A2} />
+      <Tab.Screen name="A3" component={A3} /> */}
+    </Tab.Navigator>
   );
 }
 

@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   dot: {
     width: 8,
     height: 8,
-    borderRadius: "50%",
+    borderRadius: 50,
     backgroundColor: "#EFEFEF",
   },
   activeDot: {
