@@ -8,6 +8,8 @@ import {
   View,
   Image,
 } from "react-native";
+import { SvgXml } from "react-native-svg";
+import { thumbUpIcon } from "../../../images/svg/thumb-up-svg";
 
 const SucessRegistrationModal = ({ modalVisible, setModalVisible }) => {
   return (
@@ -24,10 +26,7 @@ const SucessRegistrationModal = ({ modalVisible, setModalVisible }) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalTitle}>Congratulations!</Text>
-            <Image
-              style={styles.image}
-              source={require("../../../images/thumb-up.png")}
-            />
+            <SvgXml style={styles.image} xml={thumbUpIcon} />
             <Text style={styles.text}>
               Your account is ready to use. You will be redirected to the Home
               page in a few seconds..

@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import ChatBubble from "react-native-chat-bubble";
 import { StatusBar } from "expo-status-bar";
 import Button from "../../components/Button/Button";
-import PaginationDots from "../../components/PaginationDots/PaginationDots";
+import { SvgXml } from "react-native-svg";
+import { crownLion } from "../../images/svg/onboarding/crown-lion-svg";
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" backgroundColor="#FFFFFF" />
-      <PaginationDots page="Home" />
       <ChatBubble
         isOwnMessage={true}
         bubbleColor="#FAFAFA"
@@ -25,17 +19,14 @@ const Home = ({ navigation }) => {
       >
         <Text style={styles.speechText}>Hello, I'm Lion!</Text>
       </ChatBubble>
-      <View style={{ gap: 12, alignItems: "center", marginBottom: 54 }}>
-        <Image
-          style={styles.logo}
-          source={require("../../images/CrownLion.png")}
-        />
+      <View style={styles.logoWrapper}>
+        <SvgXml style={styles.logo} xml={crownLion} />
         <Text style={styles.title}>LIONGO</Text>
         <Text style={styles.text}>
           Learn Languages whenever and wherever you want. It's free forever.
         </Text>
       </View>
-      <View style={{ gap: 25 }}>
+      <View style={styles.buttonWrapper}>
         <Button
           title="GET STARTED"
           navigation={navigation}
@@ -61,7 +52,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     paddingBottom: 42,
-    paddingTop: 47,
+    paddingTop: 56,
   },
   speechBubble: {
     borderWidth: 1,
@@ -71,12 +62,16 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 56,
   },
   speechText: {
     fontSize: 12,
     fontFamily: "Poppins-Regular",
     color: "#650000",
+  },
+  logoWrapper: {
+    gap: 12,
+    alignItems: "center",
+    marginBottom: 54,
   },
   logo: {
     width: 206,
@@ -95,36 +90,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 99,
   },
-  touchable: {
-    borderRadius: 20,
-  },
-  button: {
-    backgroundColor: "#F2C700",
-    width: 302,
-    height: 46,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 20,
-  },
-  buttonPressed: {
-    backgroundColor: "#F2C700",
-    borderColor: "transparent",
-  },
-  buttonWhite: {
-    backgroundColor: "#FFFFFF",
-    borderColor: "#F2C700",
-    borderWidth: 1,
-  },
-  buttonText: {
-    fontSize: 25,
-    fontFamily: "Poppins-Light",
-    color: "#ffffff",
-  },
-  buttonTextYellow: {
-    color: "#F2C600",
-  },
-  buttonTextPressed: {
-    color: "#ffffff",
+  buttonWrapper: {
+    gap: 25,
   },
 });
 

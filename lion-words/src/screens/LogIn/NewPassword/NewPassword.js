@@ -3,13 +3,16 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
 } from "react-native";
 import Button from "../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { setPasswordIcon } from "../../../images/svg/login/setPassword-svg";
+import { passwordIcon } from "../../../images/svg/form/password-svg";
+import { hide } from "../../../images/svg/form/hide-svg";
 
 const NewPassword = ({ navigation }) => {
   const [password, setPassword] = useState("");
@@ -27,10 +30,7 @@ const NewPassword = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require("../../../images/newPass.png")}
-        />
+        <SvgXml style={styles.logo} xml={setPasswordIcon} />
         <Text style={styles.text}>
           Save the new password in a safe place, if you forget it then you have
           to do a password reset again.
@@ -47,18 +47,12 @@ const NewPassword = ({ navigation }) => {
               inputmode="text"
               cursorColor="#650000"
             />
-            <Image
-              style={[styles.icon, { width: 15, height: 16.67 }]}
-              source={require("../../../images/form/password.png")}
-            />
+            <SvgXml style={styles.icon} xml={passwordIcon} />
             <TouchableOpacity
               style={styles.hide}
               onPress={onPasswordShowToggle}
             >
-              <Image
-                style={{ width: 16.67, height: 14.17 }}
-                source={require("../../../images/form/hide.png")}
-              />
+              <SvgXml style={{ width: 20, height: 20 }} xml={hide} />
             </TouchableOpacity>
           </View>
           <View style={{ position: "relative" }}>
@@ -72,18 +66,12 @@ const NewPassword = ({ navigation }) => {
               inputmode="text"
               cursorColor="#650000"
             />
-            <Image
-              style={[styles.icon, { width: 15, height: 16.67 }]}
-              source={require("../../../images/form/password.png")}
-            />
+            <SvgXml style={styles.icon} xml={passwordIcon} />
             <TouchableOpacity
               style={styles.hide}
               onPress={onPasswordShowToggle}
             >
-              <Image
-                style={{ width: 16.67, height: 14.17 }}
-                source={require("../../../images/form/hide.png")}
-              />
+              <SvgXml style={{ width: 20, height: 20 }} xml={hide} />
             </TouchableOpacity>
           </View>
         </View>
@@ -146,7 +134,7 @@ const styles = StyleSheet.create({
   hide: {
     position: "absolute",
     right: 23,
-    top: 21.92,
+    top: 19,
   },
 });
 

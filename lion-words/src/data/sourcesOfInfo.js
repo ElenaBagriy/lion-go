@@ -1,26 +1,33 @@
+import { google } from "../images/svg/social/google-svg";
+import { facebook } from "../images/svg/social/facebook-svg";
+import { tiktok } from "../images/svg/social/tiktok-svg";
+import { youtube } from "../images/svg/social/youtube-svg";
+import { appStore } from "../images/svg/social/app-store-svg";
+import { googlePlay } from "../images/svg/social/googlePlay-svg";
+
 export const sources = [
   {
     name: "Google Search",
-    image: require("../images/social/google.png"),
+    svg: `${google}`,
   },
   {
     name: "Facebook",
-    image: require("../images/social/facebook.png"),
+    svg: `${facebook}`,
   },
   {
     name: "TikTok",
-    image: require("../images/social/tiktok.png"),
+    svg: `${tiktok}`,
   },
   {
     name: "YouTube",
-    image: require("../images/social/youtube.png"),
+    svg: `${youtube}`,
   },
   {
     name: "App Store",
-    image: require("../images/social/app-store.png"),
+    svg: `${appStore}`,
   },
   {
     name: "Google Play",
-    image: require("../images/social/google-play.png"),
+    svg: `${googlePlay}`,
   },
 ];

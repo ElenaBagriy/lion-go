@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 import Button from "../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { welcomeBackLionIcon } from "../../../images/svg/login/welcomeBackLion-svg";
 
 const WelcomeBack = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome Back!</Text>
-      <Image
-        style={styles.logo}
-        source={require("../../../images/WelcomeBackLion.png")}
-      />
+      <SvgXml style={styles.logo} xml={welcomeBackLionIcon} />
       <Text style={styles.text}>
         You have successfully reset and create a new password.
       </Text>

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 import Button from "../../../components/Button/Button";
 import LanguagePicker from "../../../components/LanguagePicker/LanguagePicker";
 import { reasons } from "../../../data/reasons";
+import { SvgXml } from "react-native-svg";
+import { drinkLion } from "../../../images/svg/onboarding/drinkLion-svg";
 
 const ChooseReasonsScreen = ({ navigation }) => {
   return (
@@ -10,10 +12,7 @@ const ChooseReasonsScreen = ({ navigation }) => {
       <View style={styles.mainContent}>
         <View style={styles.headerWrapper}>
           <Text style={styles.title}>Why are you learning English ?</Text>
-          <Image
-            style={styles.image}
-            source={require("../../../images/drinkLion.png")}
-          />
+          <SvgXml style={styles.image} xml={drinkLion} />
         </View>
         <LanguagePicker data={reasons} />
       </View>

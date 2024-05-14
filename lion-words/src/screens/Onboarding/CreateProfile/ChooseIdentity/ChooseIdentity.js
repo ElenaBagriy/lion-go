@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Button from "../../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { boyIcon } from "../../../../images/svg/onboarding/boy-svg";
+import { girlIcon } from "../../../../images/svg/onboarding/girl-svg";
+import { genderCheckIcon } from "../../../../images/svg/onboarding/genderCheck-svg";
 
 const ChooseIdentity = ({ navigation }) => {
   const [gender, setGender] = useState("");
@@ -29,16 +24,9 @@ const ChooseIdentity = ({ navigation }) => {
           }}
         >
           {gender === "male" && (
-            <Image
-              style={styles.icon}
-              source={require("../../../../images/genderCheck.png")}
-            />
+            <SvgXml style={styles.icon} xml={genderCheckIcon} />
           )}
-
-          <Image
-            style={styles.image}
-            source={require("../../../../images/boy.png")}
-          />
+          <SvgXml style={styles.image} xml={boyIcon} />
           <Text style={[styles.text, gender === "male" && styles.textChecked]}>
             Male
           </Text>
@@ -51,15 +39,9 @@ const ChooseIdentity = ({ navigation }) => {
           }}
         >
           {gender === "female" && (
-            <Image
-              style={styles.icon}
-              source={require("../../../../images/genderCheck.png")}
-            />
+            <SvgXml style={styles.icon} xml={genderCheckIcon} />
           )}
-          <Image
-            style={styles.image}
-            source={require("../../../../images/girl.png")}
-          />
+          <SvgXml style={styles.image} xml={girlIcon} />
           <Text
             style={[styles.text, gender === "female" && styles.textChecked]}
           >

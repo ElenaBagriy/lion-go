@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text } from "react-native";
 import Button from "../../../components/Button/Button";
 import LanguagePicker from "../../../components/LanguagePicker/LanguagePicker";
 import { sources } from "../../../data/sourcesOfInfo";
+import { SvgXml } from "react-native-svg";
+import { standingLion } from "../../../images/svg/onboarding/standingLion-svg";
 
 const ChooseSourceScreen = ({ navigation }) => {
   return (
@@ -10,10 +12,7 @@ const ChooseSourceScreen = ({ navigation }) => {
       <View style={styles.mainContent}>
         <View style={styles.headerWrapper}>
           <Text style={styles.title}>How did you know about LionGo ?</Text>
-          <Image
-            style={styles.image}
-            source={require("../../../images/standingLion.png")}
-          />
+          <SvgXml style={styles.image} xml={standingLion} />
         </View>
         <LanguagePicker data={sources} />
       </View>

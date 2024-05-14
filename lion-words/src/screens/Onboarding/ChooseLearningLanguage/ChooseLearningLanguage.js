@@ -4,13 +4,14 @@ import {
   View,
   TextInput,
   Text,
-  Image,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
 import Button from "../../../components/Button/Button";
 import LanguagePicker from "../../../components/LanguagePicker/LanguagePicker";
 import { languages } from "../../../data/languages";
+import { SvgXml } from "react-native-svg";
+import { lazyLion } from "../../../images/svg/onboarding/lazyLion-svg";
 
 const ChooseLearningLanguage = ({ navigation }) => {
   const [inputValue, setinputValue] = useState("");
@@ -34,10 +35,7 @@ const ChooseLearningLanguage = ({ navigation }) => {
             <Text style={styles.title}>
               Choose what language you want to learn.
             </Text>
-            <Image
-              style={styles.image}
-              source={require("../../../images/lazyLion.png")}
-            />
+            <SvgXml style={styles.image} xml={lazyLion} />
           </View>
           <TextInput
             style={styles.input}

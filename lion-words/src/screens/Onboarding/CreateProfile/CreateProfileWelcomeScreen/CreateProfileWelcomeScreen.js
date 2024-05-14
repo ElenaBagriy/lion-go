@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import ChatBubble from "react-native-chat-bubble";
 import Button from "../../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { welcomeLion } from "../../../../images/svg/onboarding/welcomeLion-svg";
 
 const CreateProfileWelcomeScreen = ({ navigation }) => {
   return (
@@ -17,10 +19,7 @@ const CreateProfileWelcomeScreen = ({ navigation }) => {
           <Text style={styles.speechText}>Awesome!</Text>
         </ChatBubble>
         <View style={{ gap: 27, alignItems: "center" }}>
-          <Image
-            style={styles.logo}
-            source={require("../../../../images/welcomeLion.png")}
-          />
+          <SvgXml style={styles.logo} xml={welcomeLion} />
           <Text style={styles.text}>
             Create a profile now, so you can save progress and connect with
             friends. Or you can skip it.

@@ -1,46 +1,58 @@
+import { arabicFlagIcon } from "../images/svg/flags/arabigFlagIcon-svg";
+import { chineseFlagIcon } from "../images/svg/flags/chineseFlagIcon-svg";
+import { frenchFlagIcon } from "../images/svg/flags/frenchFlagIcon-svg";
+import { germanFlagIcon } from "../images/svg/flags/germanFlagIcon-svg";
+import { hindiFlagIcon } from "../images/svg/flags/hindiFlagIcon-svg";
+import { italianFlagIcon } from "../images/svg/flags/italianFlagIcon-svg";
+import { japaneseFlagIcon } from "../images/svg/flags/japaneseFlagIcon-svg";
+import { portugueseFlagIcon } from "../images/svg/flags/portugueseFlagIcon-svg";
+import { spanishFlagIcon } from "../images/svg/flags/spanishFlagIcon-svg";
+import { turkishFlagIcon } from "../images/svg/flags/turkishFlagIcon-svg";
+import { urduFlagIcon } from "../images/svg/flags/urduFlagIcon-svg";
+
 export const languages = [
   {
     name: "Spanish",
-    image: require("../images/flags/spanish.png"),
+    svg: `${spanishFlagIcon}`,
   },
   {
     name: "French",
-    image: require("../images/flags/french.png"),
+    svg: `${frenchFlagIcon}`,
   },
   {
     name: "German",
-    image: require("../images/flags/german.png"),
+    svg: `${germanFlagIcon}`,
   },
   {
     name: "Italian",
-    image: require("../images/flags/italian.png"),
+    svg: `${italianFlagIcon}`,
   },
   {
     name: "Portuguese",
-    image: require("../images/flags/portuguese.png"),
+    svg: `${portugueseFlagIcon}`,
   },
   {
     name: "Japanese",
-    image: require("../images/flags/japanese.png"),
+    svg: `${japaneseFlagIcon}`,
   },
   {
     name: "Chinese",
-    image: require("../images/flags/chinese.png"),
+    svg: `${chineseFlagIcon}`,
   },
   {
     name: "Arabic",
-    image: require("../images/flags/arabic.png"),
+    svg: `${arabicFlagIcon}`,
   },
   {
     name: "Hindi",
-    image: require("../images/flags/hindi.png"),
+    svg: `${hindiFlagIcon}`,
   },
   {
     name: "Urdu",
-    image: require("../images/flags/urdu.png"),
+    svg: `${urduFlagIcon}`,
   },
   {
     name: "Turkish",
-    image: require("../images/flags/turkish.png"),
+    svg: `${turkishFlagIcon}`,
   },
 ];

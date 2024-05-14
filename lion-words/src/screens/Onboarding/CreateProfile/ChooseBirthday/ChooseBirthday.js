@@ -7,14 +7,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
-  TouchableOpacity,
   TextInput,
-  Alert,
-  Modal,
-  Pressable,
 } from "react-native";
 import Button from "../../../../components/Button/Button";
-
+import { SvgXml } from "react-native-svg";
+import { leonInDonoughtIcon } from "../../../../images/svg/onboarding/leon-in-donought-svg";
+import { calendarIcon } from "../../../../images/svg/form/calendarIcon-svg";
+import { thumbUpIcon } from "../../../../images/svg/thumb-up-svg";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import SucessRegistrationModal from "../../../../components/Modals/SuccessRegistration/SuccessRegistration";
@@ -98,10 +97,7 @@ const ChooseBirthday = ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.topWrapper}>
-          <Image
-            style={styles.image}
-            source={require("../../../../images/leon-in-donought.png")}
-          />
+          <SvgXml style={styles.image} xml={leonInDonoughtIcon} />
           <SucessRegistrationModal
             modalVisible={modalVisible}
             setModalVisible={setModalVisible}
@@ -119,10 +115,7 @@ const ChooseBirthday = ({ navigation }) => {
                 ref={inputRef}
                 keyboardType="number-pad"
               />
-              <Image
-                style={styles.icon}
-                source={require("../../../../images/calendarIcon.png")}
-              />
+              <SvgXml style={styles.icon} xml={calendarIcon} />
             </View>
           </TouchableWithoutFeedback>
         </View>

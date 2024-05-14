@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -9,6 +9,9 @@ import {
   Keyboard,
 } from "react-native";
 import Button from "../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { forgotPassIcon } from "../../../images/svg/login/forgotPass-svg";
+import { emailIcon } from "../../../images/svg/form/email-svg";
 
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -18,10 +21,7 @@ const ForgotPassword = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require("../../../images/forgotPass.png")}
-        />
+        <SvgXml style={styles.logo} xml={forgotPassIcon} />
         <Text style={styles.text}>
           Enter the email address to get an OTP code to reset your password.
         </Text>
@@ -38,10 +38,7 @@ const ForgotPassword = ({ navigation }) => {
               cursorColor="#650000"
               autoComplete="email"
             />
-            <Image
-              style={[styles.icon, { width: 16.67, height: 15 }]}
-              source={require("../../../images/form/email.png")}
-            />
+            <SvgXml style={styles.icon} xml={emailIcon} />
           </View>
         </View>
         <Button

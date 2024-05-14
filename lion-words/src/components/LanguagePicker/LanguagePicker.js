@@ -4,18 +4,18 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Image,
   FlatList,
   Dimensions,
   SafeAreaView,
 } from "react-native";
+import { SvgXml } from "react-native-svg";
+import { selected } from "../../images/svg/selected-svg";
 
 const LanguagePicker = ({ data }) => {
   const [selectedItem, setselectedItem] = useState("German");
 
   const handleLanguageSelect = (lang) => {
     setselectedItem(lang.name);
-    console.log("Выбран язык:", lang.name);
   };
 
   const renderItem = ({ item }) => {
@@ -27,13 +27,10 @@ const LanguagePicker = ({ data }) => {
             item.name === selectedItem && styles.selectFieldSelected,
           ]}
         >
-          <Image style={styles.flag} source={item.image}></Image>
+          <SvgXml style={styles.flag} xml={item.svg} />
           <Text style={styles.selectText}>{item.name}</Text>
           {item.name === selectedItem && (
-            <Image
-              style={styles.check}
-              source={require("../../images/selected.png")}
-            ></Image>
+            <SvgXml style={styles.check} xml={selected} />
           )}
         </View>
       </TouchableOpacity>

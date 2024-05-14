@@ -1,15 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
   Text,
-  Image,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
 } from "react-native";
 import Button from "../../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { createProfileLion } from "../../../../images/svg/onboarding/createProfileLion-svg";
+import { appleLogin } from "../../../../images/svg/social/appleLogin-svg";
+import { google } from "../../../../images/svg/social/google-svg";
+import { facebook } from "../../../../images/svg/social/facebook-svg";
+import { nameIcon } from "../../../../images/svg/form/name-svg";
+import { emailIcon } from "../../../../images/svg/form/email-svg";
+import { passwordIcon } from "../../../../images/svg/form/password-svg";
+import { hide } from "../../../../images/svg/form/hide-svg";
+import { checkedIcon } from "../../../../images/svg/form/checked-svg";
 
 const CreatingProfile = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -33,10 +42,7 @@ const CreatingProfile = ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.mainContent}>
-          <Image
-            style={styles.logo}
-            source={require("../../../../images/createProfileLion.png")}
-          />
+          <SvgXml style={styles.logo} xml={createProfileLion} />
           <View style={styles.form}>
             <View>
               <TextInput
@@ -49,10 +55,7 @@ const CreatingProfile = ({ navigation }) => {
                 cursorColor="#650000"
                 enterKeyHint="next"
               />
-              <Image
-                style={styles.icon}
-                source={require("../../../../images/form/name.png")}
-              />
+              <SvgXml style={styles.icon} xml={nameIcon} />
             </View>
             <View>
               <TextInput
@@ -66,10 +69,7 @@ const CreatingProfile = ({ navigation }) => {
                 cursorColor="#650000"
                 autoComplete="email"
               />
-              <Image
-                style={[styles.icon, { width: 16.67, height: 15 }]}
-                source={require("../../../../images/form/email.png")}
-              />
+              <SvgXml style={styles.icon} xml={emailIcon} />
             </View>
             <View style={{ position: "relative" }}>
               <TextInput
@@ -82,18 +82,12 @@ const CreatingProfile = ({ navigation }) => {
                 inputmode="text"
                 cursorColor="#650000"
               />
-              <Image
-                style={[styles.icon, { width: 15, height: 16.67 }]}
-                source={require("../../../../images/form/password.png")}
-              />
+              <SvgXml style={styles.icon} xml={passwordIcon} />
               <TouchableOpacity
                 style={styles.hide}
                 onPress={onPasswordShowToggle}
               >
-                <Image
-                  style={{ width: 16.67, height: 14.17 }}
-                  source={require("../../../../images/form/hide.png")}
-                />
+                <SvgXml style={{ width: 16.67, height: 14.17 }} xml={hide} />
               </TouchableOpacity>
             </View>
           </View>
@@ -106,11 +100,7 @@ const CreatingProfile = ({ navigation }) => {
               value={isChecked}
               onValueChange={toggleCheckBox}
             >
-              {isChecked && (
-                <Image
-                  source={require("../../../../images/form/checked.png")}
-                />
-              )}
+              {isChecked && <SvgXml xml={checkedIcon} />}
             </View>
             <Text style={styles.textCheck}>Remember me</Text>
           </TouchableOpacity>
@@ -131,28 +121,19 @@ const CreatingProfile = ({ navigation }) => {
               style={styles.socialBtn}
               onPress={loginWithSocial}
             >
-              <Image
-                style={styles.socialImg}
-                source={require("../../../../images/social/facebook-login.png")}
-              />
+              <SvgXml style={styles.socialImg} xml={facebook} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.socialBtn}
               onPress={loginWithSocial}
             >
-              <Image
-                style={[styles.socialImg, { width: 23.04 }]}
-                source={require("../../../../images/social/google-login.png")}
-              />
+              <SvgXml style={styles.socialImg} xml={google} />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.socialBtn}
               onPress={loginWithSocial}
             >
-              <Image
-                style={styles.socialImg}
-                source={require("../../../../images/social/apple-login.png")}
-              />
+              <SvgXml style={styles.socialImg} xml={appleLogin} />
             </TouchableOpacity>
           </View>
         </View>

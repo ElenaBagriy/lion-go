@@ -4,14 +4,14 @@ import {
   View,
   TextInput,
   Text,
-  Image,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
 import Button from "../../../components/Button/Button";
 import LanguagePicker from "../../../components/LanguagePicker/LanguagePicker";
 import { languages } from "../../../data/languages";
-import PaginationDots from "../../../components/PaginationDots/PaginationDots";
+import { SvgXml } from "react-native-svg";
+import { powerLion } from "../../../images/svg/onboarding/power-lion-svg";
 
 const ChooseNativeLanguage = ({ navigation }) => {
   const [inputValue, setinputValue] = useState("");
@@ -33,10 +33,7 @@ const ChooseNativeLanguage = ({ navigation }) => {
         <View style={styles.mainContent}>
           <View style={styles.headerWrapper}>
             <Text style={styles.title}>Choose your native language.</Text>
-            <Image
-              style={styles.image}
-              source={require("../../../images/powerLion.png")}
-            />
+            <SvgXml style={styles.image} xml={powerLion} />
           </View>
           <TextInput
             style={styles.input}

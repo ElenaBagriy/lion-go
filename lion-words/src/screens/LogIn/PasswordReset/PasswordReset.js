@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Button from "../../../components/Button/Button";
+import { SvgXml } from "react-native-svg";
+import { openEmailIcon } from "../../../images/svg/login/open-email-svg";
 
 const PasswordReset = ({ navigation }) => {
   const [code, setCode] = useState("");
@@ -49,10 +51,7 @@ const PasswordReset = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
-        <Image
-          style={styles.logo}
-          source={require("../../../images/passReset.png")}
-        />
+        <SvgXml style={styles.logo} xml={openEmailIcon} />
         <Text style={styles.text}>
           We've sent you the otp verification code to your email address. Check
           your email and enter the code bellow.

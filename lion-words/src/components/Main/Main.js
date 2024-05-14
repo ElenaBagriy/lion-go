@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../../screens/Home/Home";
-import { StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, Platform, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ChooseNativeLanguage from "../../screens/Onboarding/ChooseNativeLanguage/ChooseNativeLanguage";
 import ChooseLearningLanguage from "../../screens/Onboarding/ChooseLearningLanguage/ChooseLearningLanguage";
@@ -20,6 +20,8 @@ import NewPassword from "../../screens/LogIn/NewPassword/NewPassword";
 import WelcomeBack from "../../screens/LogIn/WelcomeBack/WelcomeBack";
 import PaginationDots from "../PaginationDots/PaginationDots";
 import ActionPage from "../../screens/ActionPage/ActionPage";
+import { SvgXml } from "react-native-svg";
+import { homeIcon } from "../../images/svg/bottomNav/homeIcon-svg";
 
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,7 +44,12 @@ export default function Main() {
             name="Home"
             component={Home}
             options={{
-              headerShown: false,
+              title: "",
+              headerBackTitleVisible: false,
+              headerShadowVisible: false,
+              headerTitle: () => <PaginationDots total={7} pageNumber={0} />,
+              headerTitleAlign: "center",
+              headerLeft: () => null, // скрывает стрелку назад
             }}
           />
           <MainStack.Screen
@@ -53,7 +60,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
-              headerTitle: () => <PaginationDots page="ChooseNativeLanguage" />,
+              headerTitle: () => <PaginationDots total={7} pageNumber={1} />,
               headerTitleAlign: "center",
             })}
           />
@@ -65,9 +72,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
-              headerTitle: () => (
-                <PaginationDots page="ChooseLearningLanguage" />
-              ),
+              headerTitle: () => <PaginationDots total={7} pageNumber={2} />,
               headerTitleAlign: "center",
             })}
           />
@@ -79,7 +84,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
-              headerTitle: () => <PaginationDots page="ChooseSourceScreen" />,
+              headerTitle: () => <PaginationDots total={7} pageNumber={3} />,
               headerTitleAlign: "center",
             })}
           />
@@ -91,7 +96,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
-              headerTitle: () => <PaginationDots page="ChooseReasonsScreen" />,
+              headerTitle: () => <PaginationDots total={7} pageNumber={4} />,
               headerTitleAlign: "center",
             })}
           />
@@ -103,7 +108,7 @@ export default function Main() {
               // headerBackImageSource: require("../../images/backArrow.png"),
               headerBackTitleVisible: false,
               headerShadowVisible: false,
-              headerTitle: () => <PaginationDots page="SetRemindersScreen" />,
+              headerTitle: () => <PaginationDots total={7} pageNumber={5} />,
               headerTitleAlign: "center",
             })}
           />
@@ -116,9 +121,7 @@ export default function Main() {
                 // headerBackImageSource: require("../../images/backArrow.png"),
                 headerBackTitleVisible: false,
                 headerShadowVisible: false,
-                headerTitle: () => (
-                  <PaginationDots page="CreateProfileWelcomeScreen" />
-                ),
+                headerTitle: () => <PaginationDots total={7} pageNumber={6} />,
                 headerTitleAlign: "center",
               })}
             />
@@ -261,23 +264,65 @@ export default function Main() {
 
 function TabNavigator() {
   return (
-    <Tab.Navigator initialRouteName="ActionPage">
-      <Tab.Screen
-        name="ActionPage"
-        component={ActionPage}
-        options={{
-          headerShown: false,
+    <View style={styles.container}>
+      <Tab.Navigator
+        initialRouteName="ActionPage"
+        screenOptions={{
+          tabBarActiveTintColor: "#F2C600",
+          tabBarStyle: styles.tabBarStyle,
         }}
-      />
-      {/* <Tab.Screen name="A1" component={A1} />
+      >
+        <Tab.Screen
+          name="ActionPage"
+          component={ActionPage}
+          options={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarIcon: ({ color, size }) => (
+              <SvgXml xml={homeIcon} width={size} height={size} fill={color} />
+            ),
+          }}
+        />
+        {/* <Tab.Screen name="A1" component={A1} />
       <Tab.Screen name="A2" component={A2} />
       <Tab.Screen name="A3" component={A3} /> */}
-    </Tab.Navigator>
+      </Tab.Navigator>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   keyboardContainer: {
     flex: 1,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
+  tabBarStyle: {
+    borderRadius: 20,
+    backgroundColor: "#650000", // измените на нужный цвет
+    marginBottom: 30,
+    marginLeft: 14,
+    marginRight: 14,
+    alignItems: "space-between",
+    justifyContent: "center",
+    paddingTop: 26,
+    paddingBottom: 26,
+    paddingLeft: 18,
+    paddingRight: 18,
+    borderTopWidth: 0,
+    ...Platform.select({
+      ios: {
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+    }),
+    ...Platform.select({
+      android: {
+        elevation: 3,
+      },
+    }),
   },
 });

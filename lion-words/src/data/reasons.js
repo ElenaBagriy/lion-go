@@ -1,22 +1,28 @@
+import { career } from "../images/svg/reasons/career-svg";
+import { education } from "../images/svg/reasons/education-svg";
+import { forFun } from "../images/svg/reasons/forFun-svg";
+import { movies } from "../images/svg/reasons/movies-svg";
+import { travelling } from "../images/svg/reasons/travelling-svg";
+
 export const reasons = [
   {
     name: "Just for Fun",
-    image: require("../images/reasons/forFun.png"),
+    svg: `${forFun}`,
   },
   {
     name: "Improve my Career",
-    image: require("../images/reasons/career.png"),
+    svg: `${career}`,
   },
   {
     name: "Travelling",
-    image: require("../images/reasons/travelling.png"),
+    svg: `${travelling}`,
   },
   {
     name: "Education",
-    image: require("../images/reasons/education.png"),
+    svg: `${education}`,
   },
   {
     name: "Watch Movies",
-    image: require("../images/reasons/movies.png"),
+    svg: `${movies}`,
   },
 ];

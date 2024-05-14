@@ -1,62 +1,24 @@
 import React, { useState, useEffect } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 
-// import Dots from "react-native-dots-pagination";
-
-const PaginationDots = ({ page }) => {
+const PaginationDots = ({ pageNumber, total }) => {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    setActive(page);
-  }, [active]);
+    setActive(pageNumber);
+  }, [pageNumber]);
 
-  return (
-    <View style={styles.dotsWrapper}>
-      <View style={[styles.dot, active === "Home" && styles.activeDot]} />
-      <View
-        style={[
-          styles.dot,
-          active === "ChooseNativeLanguage" && styles.activeDot,
-        ]}
-      />
-      <View
-        style={[
-          styles.dot,
-          active === "ChooseLearningLanguage" && styles.activeDot,
-        ]}
-      />
-      <View
-        style={[
-          styles.dot,
-          active === "ChooseSourceScreen" && styles.activeDot,
-        ]}
-      />
-      <View
-        style={[
-          styles.dot,
-          active === "ChooseReasonsScreen" && styles.activeDot,
-        ]}
-      />
-      <View
-        style={[
-          styles.dot,
-          active === "SetRemindersScreen" && styles.activeDot,
-        ]}
-      />
-      <View
-        style={[
-          styles.dot,
-          active === "CreateProfileWelcomeScreen" && styles.activeDot,
-        ]}
-      />
-    </View>
-  );
+  const renderDots = (total) => {
+    let dots = [];
+    for (let i = 0; i < total; i++) {
+      dots.push(
+        <View key={i} style={[styles.dot, active === i && styles.activeDot]} />
+      );
+    }
+    return dots;
+  };
+
+  return <View style={styles.dotsWrapper}>{renderDots(total)}</View>;
 };
 
 const styles = StyleSheet.create({

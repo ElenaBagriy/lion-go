@@ -14,6 +14,8 @@ import Button from "../../../components/Button/Button";
 import { Slider } from "@react-native-assets/slider";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { SvgXml } from "react-native-svg";
+import { remindLion } from "../../../images/svg/onboarding/remindLion-svg";
 
 const SetRemindersScreen = ({ navigation }) => {
   const [time, setTime] = useState(new Date());
@@ -66,10 +68,7 @@ const SetRemindersScreen = ({ navigation }) => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.mainContent}>
-          <Image
-            style={styles.image}
-            source={require("../../../images/remindLion.png")}
-          />
+          <SvgXml style={styles.image} xml={remindLion} />
           <View style={styles.textWrapper}>
             <Text style={styles.title}>Create a new drawing habit.</Text>
             <Text style={styles.secondaryText}>
