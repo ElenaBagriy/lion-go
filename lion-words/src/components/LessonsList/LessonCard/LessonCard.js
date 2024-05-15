@@ -21,7 +21,7 @@ const setBg = () => {
   return `#${randomColor}`;
 };
 
-const LessonCard = ({ item, index }) => {
+const LessonCard = ({ item, index, navigation }) => {
   return (
     <View
       style={[styles.lessonCard, { backgroundColor: colors[index].mainColor }]}
@@ -48,12 +48,15 @@ const LessonCard = ({ item, index }) => {
             />
           </View>
         </View>
-        <Text style={styles.date}>{item.date.toLocaleDateString("en-GB")}</Text>
+        <Text style={styles.date}>{item.date}</Text>
         <TouchableOpacity
           style={[
             styles.button,
             { backgroundColor: colors[index].buttonCollor },
           ]}
+          onPress={() =>
+            navigation.navigate("LessonScreen", { item: item, index: index })
+          }
         >
           <Text style={styles.buttonText}>
             {item.completed
@@ -134,6 +137,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    gap: 5,
     width: 56,
     height: 18,
     borderRadius: 20,

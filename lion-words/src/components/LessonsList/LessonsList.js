@@ -5,12 +5,14 @@ import { SvgXml } from "react-native-svg";
 import { lessons } from "../../data/lessons";
 import LessonCard from "./LessonCard/LessonCard";
 
-const LessonsList = ({ level }) => {
+const LessonsList = ({ navigation }) => {
   return (
     <FlatList
       style={styles.slide}
       data={lessons}
-      renderItem={(item, index) => LessonCard(item, index)}
+      renderItem={({ item, index }) => (
+        <LessonCard item={item} index={index} navigation={navigation} />
+      )}
       keyExtractor={(item, index) => index.toString()}
     />
   );

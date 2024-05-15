@@ -22,6 +22,7 @@ import PaginationDots from "../PaginationDots/PaginationDots";
 import ActionPage from "../../screens/ActionPage/ActionPage";
 import { SvgXml } from "react-native-svg";
 import { homeIcon } from "../../images/svg/bottomNav/homeIcon-svg";
+import LessonScreen from "../../screens/ActionPage/LessonScreen";
 
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -251,6 +252,13 @@ export default function Main() {
             <MainStack.Screen
               name="TabNavigator"
               component={TabNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <MainStack.Screen
+              name="LessonScreen"
+              component={LessonScreen}
               options={{
                 headerShown: false,
               }}

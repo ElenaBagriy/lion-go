@@ -88,7 +88,7 @@ const ActionPage = ({ navigation }) => {
         loadMinimal={true}
         loadMinimalSize={3}
       >
-        <LessonsList level={level} />
+        <LessonsList navigation={navigation} />
 
         <View style={styles.slide}>
           <Text style={styles.text}>A1.2</Text>
