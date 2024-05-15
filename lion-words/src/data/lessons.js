@@ -3,12 +3,13 @@ export const lessons = [
     date: new Date("2024-05-12"),
     words: ["Mutter", "Fatter", "Bruder"],
     learnedWords: ["Mutter", "Fatter"],
-    completed: false,
+    // completed: false,
+    completed: true,
   },
   {
     date: new Date("2024-05-13"),
     words: ["Fenster", "Sofa", "Stuhl"],
-    learnedWords: [],
+    learnedWords: ["Fenster", "Sofa"],
     completed: false,
   },
   {

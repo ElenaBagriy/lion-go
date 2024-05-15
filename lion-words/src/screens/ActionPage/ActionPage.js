@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import { SvgXml } from "react-native-svg";
@@ -15,7 +9,7 @@ import { dartsIcon } from "../../images/svg/actionsPage/darts-svg";
 import { germanFlagIcon } from "../../images/svg/flags/germanFlagIcon-svg";
 import Swiper from "react-native-swiper";
 import PaginationDots from "../../components/PaginationDots/PaginationDots";
-import LessonsList from "../../components/LessonsList";
+import LessonsList from "../../components/LessonsList/LessonsList";
 
 const setBg = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
