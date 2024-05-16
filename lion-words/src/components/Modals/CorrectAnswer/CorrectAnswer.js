@@ -38,7 +38,7 @@ const CorrectAnswer = ({
               style={styles.button}
               onPress={() => {
                 setModalVisible(false);
-                setSelected();
+                setSelected("");
                 onPressFunc();
               }}
             >

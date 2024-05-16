@@ -39,6 +39,10 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+<string>Please allow access to your photo library to select images.</string>
+<key>NSCameraUsageDescription</key>
+<string>Please allow access to your camera to capture images.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

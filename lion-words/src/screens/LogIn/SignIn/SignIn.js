@@ -97,7 +97,7 @@ const SignIn = ({ navigation }) => {
           <Button
             title="LOG IN"
             navigation={navigation}
-            component={"ChooseIdentity"}
+            component={"TabNavigator"}
           />
           <TouchableOpacity
             onPress={() => navigation.navigate("ForgotPassword")}

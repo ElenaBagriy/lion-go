@@ -42,7 +42,7 @@ const WrongAnswer = ({
               style={styles.button}
               onPress={() => {
                 setModalVisible(false);
-                setSelected();
+                setSelected("");
               }}
             >
               <Text style={styles.textButton}>Try Again</Text>

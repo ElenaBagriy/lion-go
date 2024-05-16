@@ -22,7 +22,13 @@ import PaginationDots from "../PaginationDots/PaginationDots";
 import ActionPage from "../../screens/ActionPage/ActionPage";
 import { SvgXml } from "react-native-svg";
 import { homeIcon } from "../../images/svg/bottomNav/homeIcon-svg";
+import { challengeIcon } from "../../images/svg/bottomNav/challengeIcon-svg";
+import { profileIcon } from "../../images/svg/bottomNav/profileIcon-svg";
+
 import LessonScreen from "../../screens/ActionPage/LessonScreen";
+import ChallengePage from "../../screens/ChallengePage/ChallengePage";
+import ProfilePage from "../../screens/ProfilePage/ProfilePage";
+import SettingsScreen from "../../screens/SettingsScreen/SettingsScreen";
 
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -263,6 +269,13 @@ export default function Main() {
                 headerShown: false,
               }}
             />
+            <MainStack.Screen
+              name="SettingsScreen"
+              component={SettingsScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
           </MainStack.Group>
         </MainStack.Navigator>
       </NavigationContainer>
@@ -276,6 +289,7 @@ function TabNavigator() {
       <Tab.Navigator
         initialRouteName="ActionPage"
         screenOptions={{
+          tabBarInactiveTintColor: "#FFFFFF", // цвет для неактивных вкладок
           tabBarActiveTintColor: "#F2C600",
           tabBarStyle: styles.tabBarStyle,
         }}
@@ -291,8 +305,46 @@ function TabNavigator() {
             ),
           }}
         />
-        {/* <Tab.Screen name="A1" component={A1} />
-      <Tab.Screen name="A2" component={A2} />
+        <Tab.Screen
+          name="ChallengePage"
+          component={ChallengePage}
+          options={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarIcon: ({ color, size }) => (
+              <SvgXml
+                xml={challengeIcon}
+                width={size}
+                height={size}
+                fill={color}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ProfilePage"
+          component={ProfilePage}
+          options={{
+            headerShown: false,
+            tabBarShowLabel: false,
+            tabBarIcon: ({ color, size }) => (
+              <SvgXml
+                xml={profileIcon}
+                width={size}
+                height={size}
+                fill={color}
+              />
+            ),
+          }}
+        />
+        {/* <Tab.Screen
+          name="SettingsScreen"
+          component={SettingsScreen}
+          options={{
+            headerShown: false,
+          }}
+        /> */}
+        {/* <Tab.Screen name="A2" component={A2} />
       <Tab.Screen name="A3" component={A3} /> */}
       </Tab.Navigator>
     </View>
@@ -314,7 +366,7 @@ const styles = StyleSheet.create({
     marginLeft: 14,
     marginRight: 14,
     alignItems: "space-between",
-    justifyContent: "center",
+    justifyContent: "space-between",
     paddingTop: 26,
     paddingBottom: 26,
     paddingLeft: 18,

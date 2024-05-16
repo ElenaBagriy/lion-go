@@ -9,7 +9,7 @@ import { dartsIcon } from "../../images/svg/actionsPage/darts-svg";
 import { germanFlagIcon } from "../../images/svg/flags/germanFlagIcon-svg";
 import Swiper from "react-native-swiper";
 import PaginationDots from "../../components/PaginationDots/PaginationDots";
-import LessonsList from "../../components/LessonsList/LessonsList";
+import LessonsList from "./LessonsList/LessonsList";
 
 const setBg = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -54,7 +54,12 @@ const ActionPage = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" hidden={false} animated={true} />
+      <StatusBar
+        barStyle="light-content"
+        hidden={false}
+        animated={true}
+        backgroundColor="#F2C600"
+      />
       <LinearGradient colors={["#F2C600", "#FFDA32"]} style={styles.background}>
         <TouchableOpacity style={styles.avatar}>
           <SvgXml xml={lionLogo} width="40" height="40" viewBox="0 0 99 99" />

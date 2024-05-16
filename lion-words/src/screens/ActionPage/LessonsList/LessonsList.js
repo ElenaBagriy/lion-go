@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, FlatList } from "react-native";
 import { SvgXml } from "react-native-svg";
 // import { goalIcon } from "../../images/svg/actionsPage/goal-svg";
-import { lessons } from "../../data/lessons";
+import { lessons } from "../../../data/lessons";
 import LessonCard from "./LessonCard/LessonCard";
 
 const LessonsList = ({ navigation }) => {

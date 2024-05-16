@@ -4,14 +4,18 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  SafeAreaView,
+  StatusBar,
   Dimensions,
+  Platform,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SvgXml } from "react-native-svg";
 import { closeIcon } from "../../images/svg/closeIcon-svg";
+import { questionMark } from "../../images/svg/questionMark-svg";
+
 import CorrectAnswer from "../../components/Modals/CorrectAnswer/CorrectAnswer";
 import WrongAnswer from "../../components/Modals/WrongAnswer/WrongAnswer";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width } = Dimensions.get("window");
 
@@ -49,7 +53,6 @@ const LessonScreen = ({ route, navigation }) => {
     }
     const randomIndex = Math.floor(Math.random() * availableWords.length);
     const selectedWord = availableWords[randomIndex];
-    console.log(selectedWord);
     setCurrentWord(selectedWord);
 
     const correctTranslation = selectedWord.german;
@@ -73,7 +76,13 @@ const LessonScreen = ({ route, navigation }) => {
   };
 
   return (
-    <View style={{ backgroundColor: "#FFFFFF" }}>
+    <View style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        hidden={false}
+        animated={true}
+        backgroundColor="#FFFFFF"
+      />
       <SafeAreaView>
         <View style={styles.header}>
           <TouchableOpacity onPress={handleGoBack}>
@@ -87,7 +96,10 @@ const LessonScreen = ({ route, navigation }) => {
         <Text style={styles.title}>Choose the word</Text>
         <View style={styles.divider}></View>
         <View style={styles.questionWrapper}>
-          <LinearGradient colors={["#F2C600", "#FFDA32"]} style={styles.icon} />
+          <LinearGradient colors={["#F2C600", "#FFDA32"]} style={styles.icon}>
+            <SvgXml xml={questionMark} width={15} height={15} fill="#FFFFFF" />
+          </LinearGradient>
+
           <Text style={styles.question}>{currentWord.ukrainian}</Text>
         </View>
 
@@ -96,12 +108,11 @@ const LessonScreen = ({ route, navigation }) => {
             <TouchableOpacity
               style={[
                 styles.option,
-                selected === index && { borderColor: "#F2C600" },
+                selected === option && { borderColor: "#F2C600" },
               ]}
               key={index}
               onPress={() => {
-                setSelected(index);
-                checkAnswer(option);
+                setSelected(option);
               }}
             >
               <Text
@@ -110,22 +121,30 @@ const LessonScreen = ({ route, navigation }) => {
             </TouchableOpacity>
           ))}
         </View>
-
-        <CorrectAnswer
-          modalVisible={correctModalVisible}
-          setModalVisible={setCorrectModalVisible}
-          onPressFunc={selectRandomWord}
+      </SafeAreaView>
+      <CorrectAnswer
+        modalVisible={correctModalVisible}
+        setModalVisible={setCorrectModalVisible}
+        onPressFunc={selectRandomWord}
+        setSelected={setSelected}
+      />
+      {wrongModalVisible && (
+        <WrongAnswer
+          modalVisible={wrongModalVisible}
+          setModalVisible={setWrongModalVisible}
+          correctAnswer={`${currentWord?.german.article} ${currentWord?.german.word}`}
           setSelected={setSelected}
         />
-        {wrongModalVisible && (
-          <WrongAnswer
-            modalVisible={wrongModalVisible}
-            setModalVisible={setWrongModalVisible}
-            correctAnswer={`${currentWord?.german.article} ${currentWord?.german.word}`}
-            setSelected={setSelected}
-          />
-        )}
-      </SafeAreaView>
+      )}
+      <TouchableOpacity
+        style={[styles.button, !selected && { backgroundColor: "#FFD57B" }]}
+        disabled={!selected}
+        onPress={() => {
+          checkAnswer(selected);
+        }}
+      >
+        <Text style={styles.buttonText}>Check Answer</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -133,10 +152,16 @@ const LessonScreen = ({ route, navigation }) => {
 export default LessonScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "space-between",
+    paddingBottom: 31,
+    paddingHorizontal: 31,
+  },
   header: {
-    paddingLeft: 31,
     paddingBottom: 23,
-    paddingTop: 11,
+    paddingTop: 28,
     flexDirection: "row",
     backgroundColor: "#FFFFFF",
     justifyContent: "flex-start",
@@ -172,7 +197,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   questionWrapper: {
-    paddingLeft: 31,
     gap: 11,
     flexDirection: "row",
     alignItems: "center",
@@ -182,6 +206,8 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
     borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center",
   },
   question: {
     fontFamily: "Poppins-Regular",
@@ -189,9 +215,8 @@ const styles = StyleSheet.create({
     color: "#650000",
   },
   optionList: {
-    paddingHorizontal: 51,
+    paddingHorizontal: 20,
     gap: 15,
-    height: "100%",
   },
   option: {
     height: 75,
@@ -205,5 +230,29 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     fontSize: 17,
     color: "#650000",
+  },
+  button: {
+    backgroundColor: "#F2C600",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 12,
+    ...Platform.select({
+      ios: {
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+      },
+    }),
+    ...Platform.select({
+      android: {
+        elevation: 3,
+      },
+    }),
+  },
+  buttonText: {
+    fontFamily: "Poppins-Regular",
+    fontSize: 17,
+    color: "#FFFFFF",
   },
 });

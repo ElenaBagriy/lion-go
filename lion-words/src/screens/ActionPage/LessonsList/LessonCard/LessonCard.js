@@ -7,14 +7,14 @@ import {
   Platform,
 } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { colors } from "../../../data/colors";
-import { checkmarkDoneIcon } from "../../../images/svg/actionsPage/lessons/checkmarkDoneIcon-svg";
-import { checkmarkProcessIcon } from "../../../images/svg/actionsPage/lessons/checkmarkProcessIcon-svg";
-import { checkmarkLockIcon } from "../../../images/svg/actionsPage/lessons/checkmarkLockIcon-svg";
-import { finishedTopicsRewardIcon } from "../../../images/svg/actionsPage/lessons/finishedTopicsRewardIcon-svg";
-import { playArrowIcon } from "../../../images/svg/actionsPage/lessons/playArrowIcon-svg";
+import { colors } from "../../../../data/colors";
+import { checkmarkDoneIcon } from "../../../../images/svg/actionsPage/lessons/checkmarkDoneIcon-svg";
+import { checkmarkProcessIcon } from "../../../../images/svg/actionsPage/lessons/checkmarkProcessIcon-svg";
+import { checkmarkLockIcon } from "../../../../images/svg/actionsPage/lessons/checkmarkLockIcon-svg";
+import { finishedTopicsRewardIcon } from "../../../../images/svg/actionsPage/lessons/finishedTopicsRewardIcon-svg";
+import { playArrowIcon } from "../../../../images/svg/actionsPage/lessons/playArrowIcon-svg";
 
-import TaskProgress from "../../TaskProgress/TaskProgress";
+import TaskProgress from "../../../../components/TaskProgress/TaskProgress";
 
 const setBg = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
