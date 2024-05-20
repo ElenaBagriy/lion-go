@@ -48,7 +48,10 @@ const ProfilePage = ({ navigation }) => {
         <Text style={styles.name}>Olena Bahrii</Text>
         <Text style={styles.date}>Joined since 10th May 2024</Text>
         <View style={styles.divider}></View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("PersonalInfoScreen")}
+        >
           <SvgXml xml={editIcon} />
           <Text style={styles.buttonText}>Edit Profile</Text>
         </TouchableOpacity>

@@ -27,8 +27,11 @@ import { profileIcon } from "../../images/svg/bottomNav/profileIcon-svg";
 
 import LessonScreen from "../../screens/ActionPage/LessonScreen";
 import ChallengePage from "../../screens/ChallengePage/ChallengePage";
-import ProfilePage from "../../screens/ProfilePage/ProfilePage";
+import ProfileScreen from "../../screens/ProfileScreen/ProfileScreen";
 import SettingsScreen from "../../screens/SettingsScreen/SettingsScreen";
+import PersonalInfoScreen from "../../screens/SettingsScreen/PersonalInfoScreen/PersonalInfoScreen";
+import SecurityScreen from "../../screens/SettingsScreen/SecurityScreen/SecurityScreen";
+import ChangeTargetLanguage from "../../screens/SettingsScreen/ChangeTargetLanguage/ChangeTargetLanguage";
 
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -276,6 +279,27 @@ export default function Main() {
                 headerShown: false,
               }}
             />
+            <MainStack.Screen
+              name="PersonalInfoScreen"
+              component={PersonalInfoScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <MainStack.Screen
+              name="SecurityScreen"
+              component={SecurityScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <MainStack.Screen
+              name="ChangeTargetLanguage"
+              component={ChangeTargetLanguage}
+              options={{
+                headerShown: false,
+              }}
+            />
           </MainStack.Group>
         </MainStack.Navigator>
       </NavigationContainer>
@@ -322,8 +346,8 @@ function TabNavigator() {
           }}
         />
         <Tab.Screen
-          name="ProfilePage"
-          component={ProfilePage}
+          name="ProfileScreen"
+          component={ProfileScreen}
           options={{
             headerShown: false,
             tabBarShowLabel: false,

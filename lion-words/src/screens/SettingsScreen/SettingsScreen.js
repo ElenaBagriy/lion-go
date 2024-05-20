@@ -46,7 +46,10 @@ const SettingsScreen = ({ navigation }) => {
           <Text style={styles.title}>Settings</Text>
         </View>
         <View style={styles.mainContent}>
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity
+            style={styles.block}
+            onPress={() => navigation.navigate("PersonalInfoScreen")}
+          >
             <View style={styles.blockLeft}>
               <View style={styles.icon}>
                 <SvgXml xml={profileIcon} fill="#F2C600" />
@@ -56,7 +59,10 @@ const SettingsScreen = ({ navigation }) => {
             <SvgXml xml={chevronRightIcon} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity
+            style={styles.block}
+            onPress={() => navigation.navigate("SecurityScreen")}
+          >
             <View style={styles.blockLeft}>
               <View style={[styles.icon, { backgroundColor: "#D7D7D7" }]}>
                 <SvgXml xml={lockIcon} />
@@ -84,7 +90,10 @@ const SettingsScreen = ({ navigation }) => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.block}>
+          <TouchableOpacity
+            style={styles.block}
+            onPress={() => navigation.navigate("ChangeTargetLanguage")}
+          >
             <View style={styles.blockLeft}>
               <View style={[styles.icon, { backgroundColor: "#FFEC96" }]}>
                 <SvgXml xml={languageIcon} />
